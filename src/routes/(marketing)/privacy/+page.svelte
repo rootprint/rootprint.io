@@ -96,7 +96,7 @@
     </h2>
     <p class="mt-4 text-base text-neutral leading-relaxed">
       Questions? <a
-        href="https://github.com/oleksandr-zhyhalo/rootprint/issues"
+        href="https://github.com/rootprint/rootprint/issues"
         target="_blank"
         rel="noopener noreferrer"
         class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200 ease-out-custom"

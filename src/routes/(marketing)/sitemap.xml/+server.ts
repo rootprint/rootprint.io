@@ -8,5 +8,8 @@ export const GET: RequestHandler = async () => {
   return await sitemap.response({
     origin: WebsiteBaseUrl,
     excludeRoutePatterns: [],
+    paramValues: {
+      "/compare/[slug]": ["datadog", "elastic", "loki"],
+    },
   });
 };

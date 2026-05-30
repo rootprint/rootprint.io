@@ -1,0 +1,20 @@
+{
+	"/(marketing)": [
+		"src/routes/(marketing)/+page.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/": [
+		"src/routes/+layout.ts"
+	],
+	"/(marketing)/compare/[slug]": [
+		"src/routes/(marketing)/compare/[slug]/+page.ts",
+		"src/routes/+layout.ts"
+	],
+	"/(marketing)/privacy": [
+		"src/routes/+layout.ts"
+	],
+	"/(marketing)/sitemap.xml": [
+		"src/routes/(marketing)/sitemap.xml/+server.ts"
+	]
+}
