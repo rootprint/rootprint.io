@@ -3,7 +3,7 @@
 
   const pageTitle = `Privacy — ${WebsiteName}`;
   const description =
-    "How we handle data on rootprint.io. Short version: we don't collect anything.";
+    "How we handle data on rootprint.io. Short version: we don't add analytics or tracking.";
   const canonical = `${WebsiteBaseUrl}/privacy/`;
 </script>
 
@@ -30,8 +30,11 @@
     </h1>
 
     <p class="mt-6 text-base text-neutral leading-relaxed">
-      This site doesn't collect anything. No analytics, no cookies, no tracking
-      — we don't measure visits or build any profile of who comes here.
+      We don't add any analytics, advertising, or tracking to this site — no
+      analytics scripts, no tracking cookies, and we don't build a profile of
+      who visits. The one thing to know: like any website, this site is served
+      by a hosting provider (Cloudflare), and serving a page necessarily
+      involves some standard technical data. Details below.
     </p>
 
     <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
@@ -41,18 +44,19 @@
       class="mt-4 space-y-2 text-base text-neutral leading-relaxed list-disc pl-6"
     >
       <li>
-        <strong class="text-base-content font-semibold">No analytics.</strong> We
-        don't track page views, referrers, or visitor counts.
+        <strong class="text-base-content font-semibold">No analytics scripts.</strong>
+        We don't load any analytics or measurement code, and we haven't enabled
+        visitor analytics on our host.
       </li>
       <li>
-        <strong class="text-base-content font-semibold">No cookies.</strong> Nothing
-        is stored in your browser.
+        <strong class="text-base-content font-semibold">No tracking cookies.</strong>
+        We set no cookies. Our host may set a security cookie to protect the
+        site from bots and abuse; it isn't used to track you.
       </li>
       <li>
-        <strong class="text-base-content font-semibold"
-          >No personal data.</strong
-        >
-        No IP addresses, names, emails, or identifiers.
+        <strong class="text-base-content font-semibold">No profiling.</strong>
+        We don't combine, sell, or use visitor data to build profiles or
+        identify individuals.
       </li>
       <li>
         <strong class="text-base-content font-semibold"
@@ -60,6 +64,23 @@
         > Your activity on other sites is not linked to activity here.
       </li>
     </ul>
+
+    <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
+      Hosting
+    </h2>
+    <p class="mt-4 text-base text-neutral leading-relaxed">
+      This site is served through Cloudflare. To deliver and protect the site,
+      Cloudflare processes standard connection data — including your IP address
+      and basic request details — in its server logs for a limited period.
+      Cloudflare acts as a data processor on our behalf and doesn't use this
+      data for its own advertising. See <a
+        href="https://www.cloudflare.com/privacypolicy/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200 ease-out-custom"
+        >Cloudflare's Privacy Policy</a
+      >.
+    </p>
 
     <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
       The rest of Rootprint
