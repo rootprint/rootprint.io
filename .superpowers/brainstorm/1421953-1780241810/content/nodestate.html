@@ -1,0 +1,347 @@
+<style>
+  .pv {
+    --g: #27f795;
+    --gs: #0f9d63;
+    --ink: #1c1f22;
+    --muted: #5b6168;
+    --hair: rgba(28, 31, 34, 0.14);
+    --bg: #fbfcfb;
+    --dim: #dfe4e1;
+    --dimink: #8a908a;
+  }
+  .pv * {
+    box-sizing: border-box;
+  }
+  .pv-stage {
+    background: var(--bg);
+    border: 1px solid var(--hair);
+    padding: 20px 16px;
+    min-height: 340px;
+    position: relative;
+    font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .pv-cap {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gs);
+    margin: 0 0 14px;
+  }
+  .r {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 9px;
+    align-items: center;
+    border: 1px solid var(--hair);
+    background: #fff;
+    padding: 9px 11px;
+    position: relative;
+  }
+  .n {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .l {
+    font-size: 12px;
+  }
+  .s {
+    font-size: 9px;
+    color: var(--muted);
+  }
+  .c {
+    width: 3px;
+    height: 16px;
+    margin-left: 11px;
+    position: relative;
+    background: var(--hair);
+  }
+  .tracer {
+    position: absolute;
+    left: 12px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--g);
+    box-shadow: 0 0 10px var(--g);
+    z-index: 3;
+    animation: travel 5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  }
+  @keyframes travel {
+    0% {
+      top: 14px;
+    }
+    14% {
+      top: 14px;
+    }
+    20% {
+      top: 62px;
+    }
+    33% {
+      top: 62px;
+    }
+    39% {
+      top: 110px;
+    }
+    52% {
+      top: 110px;
+    }
+    58% {
+      top: 158px;
+    }
+    71% {
+      top: 158px;
+    }
+    77% {
+      top: 206px;
+    }
+    100% {
+      top: 206px;
+    }
+  }
+
+  /* ===== PULSE: chips green by default, brief bright highlight as tracer passes ===== */
+  .pulse .n {
+    background: var(--g);
+    color: #063;
+  }
+  .pulse .l {
+    color: var(--ink);
+  }
+  .pulse .r:nth-of-type(1) {
+    animation: pl 5s infinite;
+  }
+  .pulse .r:nth-of-type(2) {
+    animation: pl 5s infinite 0.95s;
+  }
+  .pulse .r:nth-of-type(3) {
+    animation: pl 5s infinite 1.9s;
+  }
+  .pulse .r:nth-of-type(4) {
+    animation: pl 5s infinite 2.85s;
+  }
+  .pulse .r:nth-of-type(5) {
+    animation: pl 5s infinite 3.8s;
+  }
+  @keyframes pl {
+    0%,
+    100% {
+      box-shadow: none;
+      border-color: var(--hair);
+    }
+    3% {
+      box-shadow: 0 0 0 3px rgba(39, 247, 149, 0.35);
+      border-color: var(--g);
+    }
+    14% {
+      box-shadow: none;
+      border-color: var(--hair);
+    }
+  }
+
+  /* ===== FILL: chips + connectors start dim, fill solid green behind tracer and STAY; full path lit at arrival, then reset ===== */
+  .fill .n {
+    background: var(--dim);
+    color: var(--dimink);
+    transition: none;
+  }
+  .fill .l {
+    color: var(--dimink);
+  }
+  .fill .r:nth-of-type(1) .n,
+  .fill .r:nth-of-type(1) .l {
+    animation: fn 5s infinite;
+  }
+  .fill .r:nth-of-type(2) .n,
+  .fill .r:nth-of-type(2) .l {
+    animation: fn 5s infinite;
+    animation-delay: 0.95s;
+  }
+  .fill .r:nth-of-type(3) .n,
+  .fill .r:nth-of-type(3) .l {
+    animation: fn 5s infinite;
+    animation-delay: 1.9s;
+  }
+  .fill .r:nth-of-type(4) .n,
+  .fill .r:nth-of-type(4) .l {
+    animation: fn 5s infinite;
+    animation-delay: 2.85s;
+  }
+  .fill .r:nth-of-type(5) .n,
+  .fill .r:nth-of-type(5) .l {
+    animation: fn 5s infinite;
+    animation-delay: 3.8s;
+  }
+  @keyframes fn {
+    0% {
+      background: var(--dim);
+      color: var(--dimink);
+    }
+    2%,
+    92% {
+      background: var(--g);
+      color: #063;
+    }
+    100% {
+      background: var(--dim);
+      color: var(--dimink);
+    }
+  }
+  /* labels recolor */
+  .fill .l {
+    animation-name: fl !important;
+  }
+  @keyframes fl {
+    0% {
+      color: var(--dimink);
+    }
+    2%,
+    92% {
+      color: var(--ink);
+    }
+    100% {
+      color: var(--dimink);
+    }
+  }
+  /* connector fill behind tracer */
+  .fill .c::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--g);
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  .fill .c:nth-of-type(2)::after {
+    animation: cf 5s infinite 0.5s;
+  }
+  .fill .c:nth-of-type(4)::after {
+    animation: cf 5s infinite 1.45s;
+  }
+  .fill .c:nth-of-type(6)::after {
+    animation: cf 5s infinite 2.4s;
+  }
+  .fill .c:nth-of-type(8)::after {
+    animation: cf 5s infinite 3.35s;
+  }
+  @keyframes cf {
+    0% {
+      transform: scaleY(0);
+    }
+    4% {
+      transform: scaleY(1);
+    }
+    92% {
+      transform: scaleY(1);
+    }
+    100% {
+      transform: scaleY(0);
+    }
+  }
+</style>
+
+<h2>Single tracer — how do nodes react?</h2>
+<p class="subtitle">
+  One packet runs top → bottom. The question is what it leaves behind.
+</p>
+
+<div class="cards">
+  <div class="card" data-choice="pulse" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage pulse">
+          <p class="pv-cap">A · Highlight pulse</p>
+          <div class="tracer"></div>
+          <div class="r">
+            <div class="n">01</div>
+            <div class="l">App / SDK</div>
+            <div class="s">otel-sdk</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">02</div>
+            <div class="l">Rootprint API</div>
+            <div class="s">auth</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">03</div>
+            <div class="l">OTEL Collector</div>
+            <div class="s">batching</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">04</div>
+            <div class="l">Quickwit</div>
+            <div class="s">splits</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">05</div>
+            <div class="l">S3</div>
+            <div class="s">storage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Highlight pulse</h3>
+      <p>
+        Nodes stay solid green (like today). As the tracer passes, that node
+        flares brighter for a beat, then returns. Closest to the current look —
+        just a touch of life.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="fill" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage fill">
+          <p class="pv-cap">B · Progressive fill</p>
+          <div class="tracer"></div>
+          <div class="r">
+            <div class="n">01</div>
+            <div class="l">App / SDK</div>
+            <div class="s">otel-sdk</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">02</div>
+            <div class="l">Rootprint API</div>
+            <div class="s">auth</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">03</div>
+            <div class="l">OTEL Collector</div>
+            <div class="s">batching</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">04</div>
+            <div class="l">Quickwit</div>
+            <div class="s">splits</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">05</div>
+            <div class="l">S3</div>
+            <div class="s">storage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Progressive fill</h3>
+      <p>
+        Nodes & connectors start dim. The tracer fills each one solid green and
+        the link behind it, staying lit — so by the time it reaches S3 the whole
+        path glows. Strong "log safely landed" payoff. Bigger visual change.
+      </p>
+    </div>
+  </div>
+</div>

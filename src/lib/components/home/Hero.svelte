@@ -12,9 +12,6 @@
   </div>
 
   <div class="hero-copy">
-    <p class="eyebrow">
-      <span class="dot"></span>SELF-HOSTED · OPENTELEMETRY · APACHE-2.0
-    </p>
     <h1 class="display-serif hero-title">
       Own Your<br /><span class="grad-text">Log Footprint</span>
     </h1>

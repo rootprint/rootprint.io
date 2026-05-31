@@ -1,0 +1,386 @@
+<style>
+  .pv {
+    --g: #27f795;
+    --gs: #0f9d63;
+    --ink: #1c1f22;
+    --muted: #5b6168;
+    --hair: rgba(28, 31, 34, 0.14);
+    --bg: #fbfcfb;
+  }
+  .pv * {
+    box-sizing: border-box;
+  }
+  .pv-stage {
+    background: var(--bg);
+    border: 1px solid var(--hair);
+    padding: 20px 16px;
+    min-height: 340px;
+    font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .pv-cap {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gs);
+    margin: 0 0 14px;
+  }
+  .r {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 9px;
+    align-items: center;
+    border: 1px solid var(--hair);
+    background: #fff;
+    padding: 9px 11px;
+    transition: 0.25s;
+    position: relative;
+  }
+  .n {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    background: var(--g);
+    color: #063;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .l {
+    font-size: 12px;
+    color: var(--ink);
+  }
+  .s {
+    font-size: 9px;
+    color: var(--muted);
+  }
+  .c {
+    width: 1px;
+    height: 16px;
+    margin-left: 11px;
+    background: var(--hair);
+    position: relative;
+    overflow: visible;
+  }
+
+  /* ===== 1 · Steady stream — many dots, always on, every connector ===== */
+  .m1 .c::after,
+  .m1 .c::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--g);
+    box-shadow: 0 0 6px var(--g);
+    animation: dropA 1.3s linear infinite;
+  }
+  .m1 .c::before {
+    animation-delay: 0.65s;
+  }
+  .m1 .c:nth-of-type(4)::after {
+    animation-delay: 0.25s;
+  }
+  .m1 .c:nth-of-type(6)::after {
+    animation-delay: 0.5s;
+  }
+  .m1 .c:nth-of-type(8)::after {
+    animation-delay: 0.75s;
+  }
+  @keyframes dropA {
+    0% {
+      top: -4px;
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      top: 18px;
+      opacity: 0;
+    }
+  }
+
+  /* ===== 2 · Single tracer — one packet runs the whole path; node lights as it passes ===== */
+  .m2 .tracer {
+    position: absolute;
+    left: 13px;
+    top: -6px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--g);
+    box-shadow: 0 0 10px var(--g);
+    animation: travel 5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  }
+  @keyframes travel {
+    0% {
+      top: 0px;
+    }
+    14% {
+      top: 0px;
+    }
+    20% {
+      top: 48px;
+    }
+    33% {
+      top: 48px;
+    }
+    39% {
+      top: 96px;
+    }
+    52% {
+      top: 96px;
+    }
+    58% {
+      top: 144px;
+    }
+    71% {
+      top: 144px;
+    }
+    77% {
+      top: 192px;
+    }
+    100% {
+      top: 192px;
+    }
+  }
+  .m2 .r .n {
+    background: #dfe4e1;
+    color: #7a8079;
+    transition: 0.3s;
+  }
+  .m2 .r:nth-of-type(1) .n {
+    animation: lit 5s infinite;
+  }
+  .m2 .r:nth-of-type(2) .n {
+    animation: lit 5s infinite;
+    animation-delay: 0.95s;
+  }
+  .m2 .r:nth-of-type(3) .n {
+    animation: lit 5s infinite;
+    animation-delay: 1.9s;
+  }
+  .m2 .r:nth-of-type(4) .n {
+    animation: lit 5s infinite;
+    animation-delay: 2.85s;
+  }
+  .m2 .r:nth-of-type(5) .n {
+    animation: lit 5s infinite;
+    animation-delay: 3.8s;
+  }
+  @keyframes lit {
+    0%,
+    100% {
+      background: #dfe4e1;
+      color: #7a8079;
+    }
+    3%,
+    14% {
+      background: var(--g);
+      color: #063;
+    }
+  }
+
+  /* ===== 3 · Burst on view — one sweeping wave, then nodes settle with soft idle pulse ===== */
+  .m3 .c::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--g);
+    box-shadow: 0 0 8px var(--g);
+    animation: dropB 4s ease-in infinite;
+  }
+  .m3 .c:nth-of-type(4)::after {
+    animation-delay: 0.35s;
+  }
+  .m3 .c:nth-of-type(6)::after {
+    animation-delay: 0.7s;
+  }
+  .m3 .c:nth-of-type(8)::after {
+    animation-delay: 1.05s;
+  }
+  @keyframes dropB {
+    0% {
+      top: -5px;
+      opacity: 0;
+    }
+    3% {
+      opacity: 1;
+    }
+    9% {
+      top: 18px;
+      opacity: 1;
+    }
+    11% {
+      opacity: 0;
+    }
+    12%,
+    100% {
+      opacity: 0;
+    }
+  }
+  .m3 .r {
+    animation: nudge 4s ease-in infinite;
+  }
+  .m3 .r:nth-of-type(2) {
+    animation-delay: 0.35s;
+  }
+  .m3 .r:nth-of-type(3) {
+    animation-delay: 0.7s;
+  }
+  .m3 .r:nth-of-type(4) {
+    animation-delay: 1.05s;
+  }
+  .m3 .r:nth-of-type(5) {
+    animation-delay: 1.4s;
+  }
+  @keyframes nudge {
+    0%,
+    100% {
+      border-color: var(--hair);
+    }
+    5% {
+      border-color: var(--g);
+    }
+    15% {
+      border-color: var(--hair);
+    }
+  }
+</style>
+
+<h2>Living data flow — what character of motion?</h2>
+<p class="subtitle">
+  All vertical, same nodes. The question is how busy and how literal the
+  movement feels.
+</p>
+
+<div class="cards">
+  <div class="card" data-choice="stream" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage m1">
+          <p class="pv-cap">1 · Steady stream</p>
+          <div class="r">
+            <div class="n">01</div>
+            <div class="l">App / SDK</div>
+            <div class="s">otel-sdk</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">02</div>
+            <div class="l">Rootprint API</div>
+            <div class="s">auth</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">03</div>
+            <div class="l">OTEL Collector</div>
+            <div class="s">batching</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">04</div>
+            <div class="l">Quickwit</div>
+            <div class="s">splits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Steady stream</h3>
+      <p>
+        Continuous dots on every connector — ambient, always-on throughput.
+        Feels like a busy production system. Highest motion.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="tracer" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage m2" style="position: relative">
+          <p class="pv-cap">2 · Single tracer</p>
+          <div class="tracer"></div>
+          <div class="r">
+            <div class="n">01</div>
+            <div class="l">App / SDK</div>
+            <div class="s">otel-sdk</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">02</div>
+            <div class="l">Rootprint API</div>
+            <div class="s">auth</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">03</div>
+            <div class="l">OTEL Collector</div>
+            <div class="s">batching</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">04</div>
+            <div class="l">Quickwit</div>
+            <div class="s">splits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Single tracer</h3>
+      <p>
+        One packet travels the whole path; each node lights up the moment it
+        arrives. Tells a story — follow one log's journey. Calm, deliberate.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="burst" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage m3">
+          <p class="pv-cap">3 · Burst on view</p>
+          <div class="r">
+            <div class="n">01</div>
+            <div class="l">App / SDK</div>
+            <div class="s">otel-sdk</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">02</div>
+            <div class="l">Rootprint API</div>
+            <div class="s">auth</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">03</div>
+            <div class="l">OTEL Collector</div>
+            <div class="s">batching</div>
+          </div>
+          <div class="c"></div>
+          <div class="r">
+            <div class="n">04</div>
+            <div class="l">Quickwit</div>
+            <div class="s">splits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Burst on view</h3>
+      <p>
+        Mostly still; when the section scrolls into view a single wave sweeps
+        down and the borders flash green, then it settles. Restrained — one
+        moment of life. (Here it loops so you can see it.)
+      </p>
+    </div>
+  </div>
+</div>

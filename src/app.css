@@ -650,25 +650,111 @@ a {
 .arch-row:hover {
   background: var(--base-100);
 }
+
+/* Resting (dim) state — pipeline waits, greyed out, until it scrolls into view. */
 .arch-num {
   width: 40px;
   height: 40px;
-  background: var(--primary);
-  color: var(--primary-content);
+  background: var(--base-300);
+  color: var(--base-content-faint);
   display: grid;
   place-items: center;
   font-size: 13px;
   font-weight: 600;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+  transition-delay: calc(var(--i) * 0.4s);
+}
+.arch-label {
+  color: var(--base-content-faint);
+  transition: color 0.4s ease;
+  transition-delay: calc(var(--i) * 0.4s);
 }
 .arch-side {
   font-size: 11px;
   letter-spacing: 0.08em;
 }
+
+/* Connector: hairline at rest; a green fill grows down behind it on activation,
+   and a packet dot travels the gap. */
 .arch-arrow {
-  width: 1px;
-  height: 10px;
-  background: linear-gradient(180deg, var(--primary), transparent);
-  margin: 0 0 0 40px;
+  position: relative;
+  width: 2px;
+  height: 12px;
+  background: var(--hairline);
+  margin: 0 0 0 39px;
+}
+.arch-arrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--primary);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+  transition-delay: calc(var(--i) * 0.4s + 0.2s);
+}
+.arch-arrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  opacity: 0;
+}
+
+/* Lit state — added once by the inView action when the pipeline enters view. */
+.arch-pipeline.in-view .arch-num {
+  background: var(--primary);
+  color: var(--primary-content);
+}
+.arch-pipeline.in-view .arch-label {
+  color: var(--base-content);
+}
+.arch-pipeline.in-view .arch-arrow::before {
+  transform: scaleY(1);
+}
+.arch-pipeline.in-view .arch-arrow::after {
+  animation: arch-packet 0.3s ease forwards;
+  animation-delay: calc(var(--i) * 0.4s + 0.2s);
+}
+@keyframes arch-packet {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: skip the animation, render the final fully-lit pipeline. */
+@media (prefers-reduced-motion: reduce) {
+  .arch-num,
+  .arch-label,
+  .arch-arrow::before {
+    transition: none;
+  }
+  .arch-pipeline .arch-num {
+    background: var(--primary);
+    color: var(--primary-content);
+  }
+  .arch-pipeline .arch-label {
+    color: var(--base-content);
+  }
+  .arch-pipeline .arch-arrow::before {
+    transform: scaleY(1);
+  }
+  .arch-pipeline .arch-arrow::after {
+    display: none;
+  }
 }
 
 .why-grid {
@@ -874,12 +960,6 @@ a {
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
-}
-.site-nav .brand-name {
-  font-family: "Zen Dots", var(--font-sans, sans-serif);
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0;
 }
 .site-nav-links {
   flex: 1;
@@ -1138,13 +1218,6 @@ a {
 .cmp-decision li {
   display: flex;
   gap: 12px;
-}
-.cmp-fineprint {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--base-content-muted);
-  margin-top: 24px;
 }
 @media (max-width: 880px) {
   .cmp-hero,

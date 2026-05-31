@@ -1,0 +1,436 @@
+<style>
+  .pv {
+    --g: #27f795;
+    --gs: #0f9d63;
+    --ink: #1c1f22;
+    --muted: #5b6168;
+    --hair: rgba(28, 31, 34, 0.14);
+    --bg: #fbfcfb;
+  }
+  .pv * {
+    box-sizing: border-box;
+  }
+  .pv-stage {
+    background: var(--bg);
+    border: 1px solid var(--hair);
+    padding: 22px 18px;
+    min-height: 360px;
+    font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .pv-cap {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gs);
+    margin: 0 0 16px;
+  }
+
+  /* ---- A: Animated flow ---- */
+  .flow-row {
+    display: grid;
+    grid-template-columns: 34px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid var(--hair);
+    background: #fff;
+    padding: 10px 12px;
+  }
+  .flow-num {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    background: var(--g);
+    color: #063;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .flow-lab {
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .flow-side {
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .flow-conn {
+    width: 1px;
+    height: 18px;
+    margin-left: 12px;
+    background: linear-gradient(180deg, var(--g), transparent);
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-conn::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--g);
+    box-shadow: 0 0 8px var(--g);
+    animation: drop 1.6s linear infinite;
+  }
+  .flow-conn:nth-of-type(4)::after {
+    animation-delay: 0.4s;
+  }
+  .flow-conn:nth-of-type(6)::after {
+    animation-delay: 0.8s;
+  }
+  .flow-conn:nth-of-type(8)::after {
+    animation-delay: 1.2s;
+  }
+  @keyframes drop {
+    0% {
+      top: -6px;
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      top: 20px;
+      opacity: 0;
+    }
+  }
+
+  /* ---- B: Schematic diagram ---- */
+  .sch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .sch-box {
+    border: 1px solid var(--ink);
+    background: #fff;
+    padding: 9px 14px;
+    font-size: 12px;
+    color: var(--ink);
+    min-width: 150px;
+    text-align: center;
+  }
+  .sch-box b {
+    display: block;
+    font-size: 9px;
+    color: var(--gs);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .sch-edge {
+    width: 1px;
+    height: 14px;
+    background: var(--ink);
+    position: relative;
+  }
+  .sch-edge span {
+    position: absolute;
+    left: 8px;
+    top: 1px;
+    font-size: 9px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .sch-cyl {
+    width: 150px;
+    height: 42px;
+    border: 1px solid var(--ink);
+    border-radius: 50%/14px;
+    background: repeating-linear-gradient(
+      0deg,
+      #fff,
+      #fff 6px,
+      #f1f4f2 6px,
+      #f1f4f2 7px
+    );
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    color: var(--ink);
+  }
+
+  /* ---- C: Scroll spotlight ---- */
+  .sp {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    padding-left: 18px;
+  }
+  .sp::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--hair);
+  }
+  .sp-node {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    opacity: 0.4;
+    transition: 0.4s;
+  }
+  .sp-dot {
+    position: absolute;
+    left: -18px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--hair);
+  }
+  .sp-lab {
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .sp-side {
+    font-size: 10px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .sp-node.on {
+    opacity: 1;
+  }
+  .sp-node.on .sp-dot {
+    background: var(--g);
+    border-color: var(--g);
+    box-shadow: 0 0 0 4px rgba(39, 247, 149, 0.25);
+  }
+  .sp-node.on .sp-lab {
+    font-weight: 600;
+  }
+  .sp-node:nth-child(1) {
+    animation: spot 6s infinite;
+  }
+  .sp-node:nth-child(2) {
+    animation: spot 6s infinite 1.2s;
+  }
+  .sp-node:nth-child(3) {
+    animation: spot 6s infinite 2.4s;
+  }
+  .sp-node:nth-child(4) {
+    animation: spot 6s infinite 3.6s;
+  }
+  .sp-node:nth-child(5) {
+    animation: spot 6s infinite 4.8s;
+  }
+  @keyframes spot {
+    0%,
+    12% {
+      opacity: 0.4;
+    }
+    4%,
+    10% {
+      opacity: 1;
+    }
+    14%,
+    100% {
+      opacity: 0.4;
+    }
+  }
+  .sp-node:nth-child(1) {
+    animation-name: s1;
+  }
+  .sp-node:nth-child(2) {
+    animation-name: s2;
+  }
+  .sp-node:nth-child(3) {
+    animation-name: s3;
+  }
+  .sp-node:nth-child(4) {
+    animation-name: s4;
+  }
+  .sp-node:nth-child(5) {
+    animation-name: s5;
+  }
+  @keyframes s1 {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    2%,
+    18% {
+      opacity: 1;
+    }
+  }
+  @keyframes s2 {
+    0%,
+    20% {
+      opacity: 0.4;
+    }
+    22%,
+    38% {
+      opacity: 1;
+    }
+    40%,
+    100% {
+      opacity: 0.4;
+    }
+  }
+  @keyframes s3 {
+    0%,
+    40% {
+      opacity: 0.4;
+    }
+    42%,
+    58% {
+      opacity: 1;
+    }
+    60%,
+    100% {
+      opacity: 0.4;
+    }
+  }
+  @keyframes s4 {
+    0%,
+    60% {
+      opacity: 0.4;
+    }
+    62%,
+    78% {
+      opacity: 1;
+    }
+    80%,
+    100% {
+      opacity: 0.4;
+    }
+  }
+  @keyframes s5 {
+    0%,
+    80% {
+      opacity: 0.4;
+    }
+    82%,
+    98% {
+      opacity: 1;
+    }
+  }
+</style>
+
+<h2>Pipeline visualization — pick a direction</h2>
+<p class="subtitle">
+  Same 5 nodes (App/SDK → Rootprint API → OTEL Collector → Quickwit → S3). Three
+  different ways to make the right column feel alive. Watch the motion, then
+  tell me which resonates.
+</p>
+
+<div class="cards">
+  <div class="card" data-choice="flow" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage">
+          <p class="pv-cap">A · Living data flow</p>
+          <div class="flow-row">
+            <div class="flow-num">01</div>
+            <div class="flow-lab">App / SDK</div>
+            <div class="flow-side">otel-sdk</div>
+          </div>
+          <div class="flow-conn"></div>
+          <div class="flow-row">
+            <div class="flow-num">02</div>
+            <div class="flow-lab">Rootprint API</div>
+            <div class="flow-side">auth</div>
+          </div>
+          <div class="flow-conn"></div>
+          <div class="flow-row">
+            <div class="flow-num">03</div>
+            <div class="flow-lab">OTEL Collector</div>
+            <div class="flow-side">batching</div>
+          </div>
+          <div class="flow-conn"></div>
+          <div class="flow-row">
+            <div class="flow-num">04</div>
+            <div class="flow-lab">Quickwit</div>
+            <div class="flow-side">splits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Living data flow</h3>
+      <p>
+        Keeps the list, but log "packets" stream down the connectors and nodes
+        pulse as data passes. Reads as: telemetry is moving through the system
+        right now.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="schematic" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage">
+          <p class="pv-cap">B · Architecture schematic</p>
+          <div class="sch">
+            <div class="sch-box"><b>01 · SOURCE</b>App / SDK</div>
+            <div class="sch-edge"><span>otel-sdk</span></div>
+            <div class="sch-box"><b>02 · GATEWAY</b>Rootprint API</div>
+            <div class="sch-edge"><span>auth</span></div>
+            <div class="sch-box"><b>03 · PIPELINE</b>OTEL Collector</div>
+            <div class="sch-edge"><span>splits</span></div>
+            <div class="sch-cyl">S3 · object store</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Architecture schematic</h3>
+      <p>
+        Turns the list into a real system diagram — labelled boxes, edge labels
+        on the connectors, S3 drawn as a storage cylinder. Reads as: this is
+        genuine infrastructure.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="spotlight" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pv">
+        <div class="pv-stage">
+          <p class="pv-cap">C · Sequential spotlight</p>
+          <div class="sp">
+            <div class="sp-node">
+              <span class="sp-dot"></span><span class="sp-lab">App / SDK</span
+              ><span class="sp-side">otel-sdk</span>
+            </div>
+            <div class="sp-node">
+              <span class="sp-dot"></span
+              ><span class="sp-lab">Rootprint API</span
+              ><span class="sp-side">auth</span>
+            </div>
+            <div class="sp-node">
+              <span class="sp-dot"></span
+              ><span class="sp-lab">OTEL Collector</span
+              ><span class="sp-side">batching</span>
+            </div>
+            <div class="sp-node">
+              <span class="sp-dot"></span><span class="sp-lab">Quickwit</span
+              ><span class="sp-side">splits</span>
+            </div>
+            <div class="sp-node">
+              <span class="sp-dot"></span><span class="sp-lab">S3</span
+              ><span class="sp-side">storage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Sequential spotlight</h3>
+      <p>
+        A connecting line ties the nodes together; each lights up in turn (and
+        on scroll, the trail draws as you enter the section). Reads as: a guided
+        walkthrough of the path.
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import Eyebrow from "$lib/components/Eyebrow.svelte";
   import { reveal } from "$lib/actions/reveal";
+  import { inView } from "$lib/actions/inView";
   import { pipeline, valueCards } from "$lib/data/home";
 </script>
 
@@ -19,15 +20,15 @@
         </p>
       </div>
 
-      <div class="arch-pipeline">
+      <div class="arch-pipeline" use:inView>
         {#each pipeline as node, i}
-          <div class="arch-row">
+          <div class="arch-row" style="--i:{i}">
             <div class="arch-num mono">{node.num}</div>
-            <div>{node.label}</div>
+            <div class="arch-label">{node.label}</div>
             <div class="mono faint arch-side">{node.side}</div>
           </div>
           {#if i < pipeline.length - 1}
-            <div class="arch-arrow"></div>
+            <div class="arch-arrow" style="--i:{i}"></div>
           {/if}
         {/each}
       </div>
@@ -37,7 +38,7 @@
       {#each valueCards as card, i}
         <div class="why-cell" use:reveal={{ delay: i * 70 }}>
           <p class="eyebrow why-meta">{card.meta}</p>
-          <h4 class="why-title">{card.title}</h4>
+          <h3 class="why-title">{card.title}</h3>
           <p class="muted why-body">{card.body}</p>
         </div>
       {/each}

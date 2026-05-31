@@ -22,13 +22,19 @@
         <div class="shot-cell" use:reveal={{ delay: i * 70 }}>
           <div class="shot" class:shot-img={screen.img}>
             {#if screen.img}
-              <img class="shot-screenshot" src={screen.img} alt={screen.alt} loading="lazy" decoding="async" />
+              <img
+                class="shot-screenshot"
+                src={screen.img}
+                alt={screen.alt}
+                loading="lazy"
+                decoding="async"
+              />
             {:else}
               <span class="shot-tag">{screen.tag}</span>
             {/if}
           </div>
           <div class="shot-cap">
-            <h4 class="if-title">{screen.title}</h4>
+            <h3 class="if-title">{screen.title}</h3>
             <p class="muted if-body">{screen.body}</p>
           </div>
         </div>
@@ -51,8 +57,11 @@
     line-height: 1.6;
   }
   .shot-img {
-    background: var(--base-100);
+    background: var(--base-200);
     overflow: hidden;
+    /* Mat each screenshot so adjacent tiles read as separate framed shots
+       instead of one continuous image. */
+    padding: 14px;
   }
   .shot-screenshot {
     display: block;
@@ -60,6 +69,9 @@
     height: 100%;
     object-fit: cover;
     object-position: top left;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 8px;
+    background: var(--base-100);
   }
   .if-title {
     font-size: 18px;

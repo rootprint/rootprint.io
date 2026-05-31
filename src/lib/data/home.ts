@@ -123,10 +123,14 @@ export const screens: Screen[] = [
     tag: "FILTERS + HISTOGRAM",
     title: "Slice by field, text, and time",
     body: "Query string, saved queries, and a histogram to find the spike fast.",
+    img: "/images/filters-histogram.png",
+    alt: "Rootprint filters: a level facet (DEBUG, INFO, WARN, ERROR, CRITICAL) and service_name filter beside a frequency histogram of matching logs.",
   },
   {
     tag: "CONTEXT",
     title: "See what happened around it",
     body: "Expand any match to the log lines before and after to trace what led to the error.",
+    img: "/images/context.png",
+    alt: "Rootprint context view: a selected payment-service log line surrounded by the events before and after it, with a service_name filter applied.",
   },
 ];

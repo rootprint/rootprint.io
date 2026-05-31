@@ -1,4 +1,13 @@
 export function reveal(node: HTMLElement, options?: { delay?: number }) {
+  // Respect the user's motion preference: skip the fade-up entirely and leave
+  // the content in its final, visible state.
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return {};
+  }
+
   const delay = options?.delay ?? 0;
 
   node.style.opacity = "0";

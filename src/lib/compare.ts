@@ -15,7 +15,6 @@ export interface Competitor {
   competitorCol: string;
   competitorStay: string;
   tagline: string;
-  updated: string;
   tldrCost: string;
   tldrData: string;
   tldrTrade: string;
@@ -36,7 +35,6 @@ export const compareData: Record<string, Competitor> = {
     competitorStay: "DATADOG",
     tagline:
       "An honest, side-by-side look at where Rootprint fits, where Datadog still wins, and what changes when you move log evidence inside your own perimeter.",
-    updated: "2026-05-29",
     tldrCost:
       "Pay for storage and compute you already operate, not per-GB ingestion tiers.",
     tldrData: "Logs stay inside your VPC. No third-party retention contract.",
@@ -59,7 +57,6 @@ export const compareData: Record<string, Competitor> = {
       { mark: "r:YES", text: "Fully managed — no ops", tone: "win" },
       { mark: "r:YES", text: "Full suite", tone: "win" },
       { text: "Crosses third-party boundary", tone: "lose" },
-      { text: "Proprietary index format", tone: "lose" },
     ],
   },
   elastic: {
@@ -72,7 +69,6 @@ export const compareData: Record<string, Competitor> = {
     competitorStay: "ELASTIC",
     tagline:
       "How Rootprint compares to a self-managed ELK stack — what you keep, what you give up, and why object-storage economics change the math at long retention.",
-    updated: "2026-05-29",
     tldrCost:
       "Object storage instead of a stateful Elasticsearch cluster. Retention scales with $/GB, not node count.",
     tldrData:
@@ -96,7 +92,6 @@ export const compareData: Record<string, Competitor> = {
       { mark: "x:HEAVY", text: "Shards, JVM, capacity planning", tone: "lose" },
       { mark: "r:YES", text: "APM + general search", tone: "win" },
       { text: "Stays inside your infra" },
-      { text: "Snapshot / reindex to migrate", tone: "lose" },
     ],
   },
   loki: {
@@ -109,7 +104,6 @@ export const compareData: Record<string, Competitor> = {
     competitorStay: "LOKI",
     tagline:
       "Loki indexes labels; Rootprint indexes full text. Where that distinction matters during an incident — and where Loki's tradeoff still wins.",
-    updated: "2026-05-29",
     tldrCost:
       "Both are object-storage-backed. Costs are close; query shape is what differs.",
     tldrData:
@@ -137,7 +131,6 @@ export const compareData: Record<string, Competitor> = {
       },
       { mark: "x:NO", text: "Logs only (Grafana for rest)" },
       { text: "Stays inside your infra" },
-      { text: "Chunk format + LogQL coupling", tone: "lose" },
     ],
   },
 };

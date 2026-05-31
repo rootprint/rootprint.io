@@ -31,11 +31,10 @@
   <nav class="wrap site-nav">
     <a href="/" class="brand">
       <img
-        src="/logo.png"
-        alt=""
-        style="width:24px;height:24px;display:block;"
+        src="/rootprint-wordmark.png"
+        alt="Rootprint"
+        style="height:26px;width:auto;display:block;"
       />
-      <span class="brand-name">Rootprint</span>
     </a>
 
     <!-- Desktop center links -->
@@ -163,15 +162,11 @@
         <a href={docsUrl} class="footer-link">Docs</a>
         <a href="/#capabilities" class="footer-link">Capabilities</a>
         <a href="{githubUrl}/releases" class="footer-link">Changelog</a>
-        <a href="{githubUrl}/blob/main/CHANGELOG.md" class="footer-link"
-          >Roadmap</a
-        >
       </div>
       <div class="footer-cell">
         <div class="mono faint footer-h">PROJECT</div>
         <a href={githubUrl} class="footer-link">GitHub</a>
         <a href="{githubUrl}/issues" class="footer-link">Issues</a>
-        <a href="{githubUrl}/discussions" class="footer-link">Discussions</a>
         <a href="{githubUrl}/releases" class="footer-link">Releases</a>
       </div>
       <div class="footer-cell">
@@ -179,20 +174,18 @@
         <a href="/compare/datadog/" class="footer-link">vs Datadog</a>
         <a href="/compare/elastic/" class="footer-link">vs Elastic</a>
         <a href="/compare/loki/" class="footer-link">vs Loki</a>
-        <a href="/#compare" class="footer-link faint">All comparisons</a>
       </div>
       <div class="footer-cell">
         <div class="mono faint footer-h">DEVELOPERS</div>
-        <a href={docsUrl} class="footer-link">Quickstart</a>
-        <a href="{docsUrl}/install/docker-compose" class="footer-link"
-          >OTLP setup</a
+        <a href="{docsUrl}/api/overview" class="footer-link">API reference</a>
+        <a href="{docsUrl}/quickstart" class="footer-link">Quickstart</a>
+        <a href="{docsUrl}/send-logs/otlp" class="footer-link">OTLP setup</a>
+        <a href="{docsUrl}/search/query-language" class="footer-link"
+          >Query language</a
         >
-        <a href={docsUrl} class="footer-link">Query DSL</a>
-        <a href={docsUrl} class="footer-link">API reference</a>
       </div>
       <div class="footer-cell">
         <div class="mono faint footer-h">COMMUNITY</div>
-        <a href="{githubUrl}/discussions" class="footer-link">Discussions</a>
         <a href="{githubUrl}/blob/main/CONTRIBUTING.md" class="footer-link"
           >Contributing</a
         >
