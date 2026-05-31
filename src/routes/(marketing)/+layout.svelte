@@ -1,5 +1,6 @@
 <script lang="ts">
   import { WebsiteName } from "./../../config";
+  import { docsUrl, githubUrl } from "$lib/links";
 
   interface Props {
     children?: import("svelte").Snippet;
@@ -9,8 +10,6 @@
   let mobileMenuOpen = $state(false);
   const mobileMenuId = "mobile-navigation";
 
-  const docsUrl = "https://docs.rootprint.io";
-  const githubUrl = "https://github.com/rootprint/rootprint";
   const version = "v0.2.2";
 
   const navLinks = [
@@ -34,7 +33,7 @@
   <nav class="wrap site-nav">
     <a href="/" class="brand">
       <img
-        src="/favicon.png"
+        src="/logo.png"
         alt=""
         style="width:24px;height:24px;display:block;"
       />

@@ -43,6 +43,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | `/compare/${string}` & {} | `/compare/${string}/` & {} | "/privacy/" | "/sitemap.xml";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/android-chrome-192x192.png" | "/android-chrome-512x512.png" | "/apple-touch-icon.png" | "/favicon-16x16.png" | "/favicon-32x32.png" | "/favicon.ico" | "/favicon.png" | "/fonts/geist-mono-variable.woff2" | "/fonts/geist-sans-variable.woff2" | "/images/home-image.png" | "/robots.txt" | "/site.webmanifest" | string & {};
+		Asset(): "/android-chrome-192x192.png" | "/android-chrome-512x512.png" | "/apple-touch-icon.png" | "/favicon-16x16.png" | "/favicon-32x32.png" | "/favicon.ico" | "/fonts/geist-mono-variable.woff2" | "/fonts/geist-sans-variable.woff2" | "/images/home-image.png" | "/logo.png" | "/robots.txt" | "/site.webmanifest" | string & {};
 	}
 }

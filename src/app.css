@@ -535,7 +535,9 @@ a {
 .shot-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--hairline);
+  /* Top rule only — page vrails frame the sides, the section divider the
+     bottom. Side borders are restored below 720px where the vrails hide. */
+  border-top: 1px solid var(--hairline);
   background: var(--base-200);
 }
 .shot-cell {
@@ -578,7 +580,9 @@ a {
 .caps-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--hairline);
+  /* Only a top rule — the page vrails (left/right) and the section divider
+     (bottom) already frame this grid, so a full border would double them. */
+  border-top: 1px solid var(--hairline);
   background: var(--base-200);
 }
 .caps-cell {
@@ -614,6 +618,20 @@ a {
   }
   .caps-cell:last-child {
     border-bottom: 0;
+  }
+}
+
+/* Below 720px the page vrails hide, so rail-spanning grids need their own
+   left/right borders back to stay framed. (Top/bottom still come from the
+   section dividers / each grid's own top rule.) */
+@media (max-width: 720px) {
+  .caps-grid,
+  .shot-grid,
+  .why-grid,
+  .compare-grid,
+  .start-grid {
+    border-left: 1px solid var(--hairline);
+    border-right: 1px solid var(--hairline);
   }
 }
 
@@ -656,7 +674,7 @@ a {
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--hairline);
+  border-top: 1px solid var(--hairline);
   background: var(--base-200);
 }
 .why-cell {
@@ -685,7 +703,8 @@ a {
 
 /* ── Get started split ───────────────────────────────────────────────────── */
 .start-grid {
-  border: 1px solid var(--hairline);
+  /* Fully framed by the section dividers (top/bottom) and page vrails
+     (sides); no own border on desktop. Sides restored below 720px. */
   background: var(--base-200);
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -716,7 +735,7 @@ a {
 .compare-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--hairline);
+  border-top: 1px solid var(--hairline);
   background: var(--base-200);
 }
 .compare-card {
@@ -1165,4 +1184,9 @@ a {
   * {
     scroll-behavior: auto !important;
   }
+}
+
+/* Offset in-page anchor targets so headings clear the sticky header. */
+.anchor {
+  scroll-margin-top: 72px;
 }
