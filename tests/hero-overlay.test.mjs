@@ -18,3 +18,12 @@ test('hero R field stays consistent across the whole section', async () => {
 	assert.doesNotMatch(css, /\.bar-field\s*\{[^}]*mask-image:/s);
 	assert.doesNotMatch(css, /\.bar-field\s*\{[^}]*-webkit-mask-image:/s);
 });
+
+test('site uses a cold gray base palette instead of warm paper tones', async () => {
+	const css = await readFile(new URL('../src/app.css', import.meta.url), 'utf8');
+
+	assert.match(css, /--color-base-100:\s*oklch\(97\.2% 0\.004 255\)/);
+	assert.match(css, /--base-100:\s*oklch\(97\.2% 0\.004 255\)/);
+	assert.match(css, /--hairline:\s*oklch\(20% 0\.012 255 \/ 0\.12\)/);
+	assert.doesNotMatch(css, /warm paper/);
+});

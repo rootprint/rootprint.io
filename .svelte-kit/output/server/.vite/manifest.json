@@ -30,9 +30,9 @@
     "file": "chunks/false.js",
     "name": "false"
   },
-  "_index.CiJrV9N-.css": {
-    "file": "_app/immutable/assets/index.CiJrV9N-.css",
-    "src": "_index.CiJrV9N-.css"
+  "_index.B5j1T9Ob.css": {
+    "file": "_app/immutable/assets/index.B5j1T9Ob.css",
+    "src": "_index.B5j1T9Ob.css"
   },
   "_index.js": {
     "file": "chunks/index.js",
@@ -44,7 +44,7 @@
       "_utils.js"
     ],
     "css": [
-      "_app/immutable/assets/index.CiJrV9N-.css"
+      "_app/immutable/assets/index.B5j1T9Ob.css"
     ]
   },
   "_internal.js": {

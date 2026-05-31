@@ -7,7 +7,7 @@
 
 /* ───────────────────────────────────────────────────────────────────────
    Rootprint — refined light "engineering blueprint" theme.
-   DNA: zed.dev (warm paper canvas, serif editorial headline, faint
+   DNA: zed.dev (cold mineral canvas, serif editorial headline, faint
         construction lines + crosshair corner marks, hairline content frame,
         keyboard-key chips, mono meta) × cal.com (rounded bento cards, soft
         elevation, generous spacing, gradient accents, smooth micro-motion).
@@ -26,12 +26,12 @@
   --color-secondary-content: oklch(99% 0.004 95);
   --color-accent: oklch(54% 0.16 248); /* blue informational */
   --color-accent-content: oklch(99% 0.004 95);
-  --color-neutral: oklch(46% 0.012 95); /* muted text */
-  --color-neutral-content: oklch(99% 0.004 95);
-  --color-base-100: oklch(97.6% 0.008 95); /* canvas — warm paper */
-  --color-base-200: oklch(99.3% 0.004 95); /* elevated cards — near white */
-  --color-base-300: oklch(93% 0.008 95); /* field bg / dividers */
-  --color-base-content: oklch(22% 0.018 95); /* default text — warm near-black */
+  --color-neutral: oklch(44% 0.012 255); /* muted text */
+  --color-neutral-content: oklch(97% 0.003 255);
+  --color-base-100: oklch(97.2% 0.004 255); /* canvas — cold gray */
+  --color-base-200: oklch(98.8% 0.002 255); /* elevated cards — near white */
+  --color-base-300: oklch(93.5% 0.006 255); /* field bg / dividers */
+  --color-base-content: oklch(20% 0.012 255); /* default text — cool near-black */
   --color-info: oklch(54% 0.16 248);
   --color-info-content: oklch(99% 0.004 95);
   --color-success: oklch(64% 0.19 155.5);
@@ -71,12 +71,12 @@
 
 /* ── Design tokens (light blueprint theme) ───────────────────────────────── */
 :root {
-  --base-100: oklch(97.6% 0.008 95);
-  --base-200: oklch(99.3% 0.004 95);
-  --base-300: oklch(93% 0.008 95);
-  --base-content: oklch(22% 0.018 95);
-  --base-content-muted: oklch(46% 0.012 95);
-  --base-content-faint: oklch(62% 0.01 95);
+  --base-100: oklch(97.2% 0.004 255);
+  --base-200: oklch(98.8% 0.002 255);
+  --base-300: oklch(93.5% 0.006 255);
+  --base-content: oklch(20% 0.012 255);
+  --base-content-muted: oklch(44% 0.012 255);
+  --base-content-faint: oklch(60% 0.01 255);
 
   --primary: oklch(86% 0.204 155.5); /* brand green #27f795 */
   --primary-strong: oklch(60% 0.19 155.5); /* readable deep green for text/hover */
@@ -84,17 +84,17 @@
 
   --secondary: oklch(42% 0.12 155.5);
   --accent: oklch(54% 0.16 248);
-  --neutral: oklch(18% 0.012 95); /* dark surface (inverted) */
-  --neutral-content: oklch(96% 0.004 95);
+  --neutral: oklch(17% 0.01 255); /* dark surface (inverted) */
+  --neutral-content: oklch(97% 0.003 255);
 
   --info: oklch(54% 0.16 248);
   --success: oklch(64% 0.19 155.5);
   --warning: oklch(72% 0.15 75);
   --error: oklch(58% 0.21 25);
 
-  --hairline: oklch(22% 0.018 95 / 0.12);
-  --hairline-strong: oklch(22% 0.018 95 / 0.24);
-  --blueprint: oklch(22% 0.018 95 / 0.06);
+  --hairline: oklch(20% 0.012 255 / 0.12);
+  --hairline-strong: oklch(20% 0.012 255 / 0.24);
+  --blueprint: oklch(20% 0.012 255 / 0.06);
 
   /* Flat theme — no elevation */
   --glow-soft: oklch(86% 0.204 155.5 / 0.2);
