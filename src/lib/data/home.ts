@@ -31,6 +31,9 @@ export interface Screen {
   tag: string;
   title: string;
   body: string;
+  /** Optional product screenshot. When set, it replaces the placeholder tile. */
+  img?: string;
+  alt?: string;
 }
 
 export const capabilities: Capability[] = [
@@ -38,7 +41,7 @@ export const capabilities: Capability[] = [
     num: "01",
     kicker: "OPENTELEMETRY FIRST",
     name: "Ingest",
-    description: "OTLP/HTTP endpoint, NDJSON gateway, per-index bearer tokens.",
+    description: "OTLP endpoint, HTTP gateway, per-index bearer tokens.",
   },
   {
     num: "02",
@@ -112,16 +115,18 @@ export const screens: Screen[] = [
   {
     tag: "FULL-TEXT SEARCH",
     title: "Search across every field",
-    body: "Full-text and structured field filters over your indexed logs, powered by Quickwit.",
+    body: "Full-text and structured field filters over your indexed logs.",
+    img: "/images/full-text-search.png",
+    alt: "Rootprint full-text search: a query filtering by service_name with a frequency histogram and a live result table.",
   },
   {
     tag: "FILTERS + HISTOGRAM",
     title: "Slice by field, text, and time",
-    body: "Quickwit query string, saved queries, and a histogram to find the spike fast.",
+    body: "Query string, saved queries, and a histogram to find the spike fast.",
   },
   {
-    tag: "EXPORT",
-    title: "Take your results with you",
-    body: "Export query results as CSV or NDJSON for sharing or deeper analysis.",
+    tag: "CONTEXT",
+    title: "See what happened around it",
+    body: "Expand any match to the log lines before and after to trace what led to the error.",
   },
 ];

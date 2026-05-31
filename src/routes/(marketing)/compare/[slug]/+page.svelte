@@ -25,7 +25,7 @@
   const rpColumn = [
     { mark: "r:YES", text: "Self-host on your infra", tone: "win" },
     { mark: "r:Apache-2.0", text: "Open source", tone: "win" },
-    { text: "OTLP/HTTP · NDJSON · Vector · Fluent Bit", tone: "" },
+    { text: "OTLP · HTTP · Vector · Fluent Bit", tone: "" },
     { text: "Full-text + structured fields", tone: "" },
     { text: "Your S3 / R2 / MinIO bucket", tone: "win" },
     { text: "Object-storage rates ($/GB/month)", tone: "win" },

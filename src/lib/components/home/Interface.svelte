@@ -8,11 +8,9 @@
 <div class="section-divider" aria-hidden="true"></div>
 <section id="interface" class="anchor">
   <div class="rail-wrap">
-    <div class="split-2 if-head">
-      <div>
-        <Eyebrow label="INTERFACE" />
-        <h2>Built To Read<br />Under Pressure</h2>
-      </div>
+    <div class="if-head">
+      <Eyebrow label="INTERFACE" />
+      <h2>Built To Read<br />Under Pressure</h2>
       <p class="muted if-intro">
         The UI is for reading logs during an incident — not building dashboards.
         Severity, service, fields, and raw messages stay visible.
@@ -22,8 +20,12 @@
     <div class="shot-grid">
       {#each screens as screen, i}
         <div class="shot-cell" use:reveal={{ delay: i * 70 }}>
-          <div class="shot">
-            <span class="shot-tag">{screen.tag}</span>
+          <div class="shot" class:shot-img={screen.img}>
+            {#if screen.img}
+              <img class="shot-screenshot" src={screen.img} alt={screen.alt} loading="lazy" decoding="async" />
+            {:else}
+              <span class="shot-tag">{screen.tag}</span>
+            {/if}
           </div>
           <div class="shot-cap">
             <h4 class="if-title">{screen.title}</h4>
@@ -43,10 +45,21 @@
     margin-top: 20px;
   }
   .if-intro {
-    align-self: end;
+    margin-top: 24px;
     max-width: 46ch;
     font-size: 14px;
     line-height: 1.6;
+  }
+  .shot-img {
+    background: var(--base-100);
+    overflow: hidden;
+  }
+  .shot-screenshot {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
   }
   .if-title {
     font-size: 18px;

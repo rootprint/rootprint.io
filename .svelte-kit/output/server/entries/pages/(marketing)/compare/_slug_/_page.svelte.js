@@ -5,7 +5,7 @@ function _page($$renderer, $$props) {
     let { data } = $$props;
     const c = derived(() => data.competitor);
     const docsUrl = "https://docs.rootprint.io";
-    const githubUrl = "https://github.com/oleksandr-zhyhalo/rootprint";
+    const githubUrl = "https://github.com/rootprint/rootprint";
     const capabilities = [
       "Hosting model",
       "License",
@@ -13,7 +13,6 @@ function _page($$renderer, $$props) {
       "Index & query",
       "Storage",
       "Retention pricing",
-      "Query latency (p95)",
       "Operational surface",
       "Beyond logs (APM/RUM)",
       "Data sovereignty",
@@ -22,12 +21,11 @@ function _page($$renderer, $$props) {
     const rpColumn = [
       { mark: "r:YES", text: "Self-host on your infra", tone: "win" },
       { mark: "r:Apache-2.0", text: "Open source", tone: "win" },
-      { text: "OTLP/HTTP · NDJSON · Vector · Fluent Bit", tone: "" },
+      { text: "OTLP · HTTP · Vector · Fluent Bit", tone: "" },
       { text: "Full-text + structured fields", tone: "" },
       { text: "Your S3 / R2 / MinIO bucket", tone: "win" },
       { text: "Object-storage rates ($/GB/month)", tone: "win" },
-      { text: "~43ms median", tone: "win" },
-      { text: "Single binary + object storage", tone: "win" },
+      { text: "Compose stack + object storage", tone: "win" },
       { mark: "x:NO", text: "Logs only", tone: "lose" },
       { text: "Stays inside your VPC", tone: "win" },
       { text: "NDJSON exports, readable segments", tone: "win" }
@@ -36,7 +34,7 @@ function _page($$renderer, $$props) {
       "Long retention is the budget killer.",
       "Compliance / sovereignty requires logs stay in your perimeter.",
       "You already operate object storage and OpenTelemetry collectors.",
-      "You want a binary you can read, audit, and fork."
+      "You want a stack you can read, audit, and fork."
     ];
     function mark(m) {
       if (!m) return null;
@@ -56,9 +54,9 @@ function _page($$renderer, $$props) {
       let item = each_array[$$index];
       $$renderer2.push(`<a${attr("href", `/compare/${stringify(item.slug)}/`)}${attr_class(clsx(item.slug === c().slug ? "" : "muted"))}${attr_style(item.slug === c().slug ? "color:var(--primary-strong);" : "")}>vs ${escape_html(item.navLabel)}</a>`);
     }
-    $$renderer2.push(`<!--]--> <a href="/#start" class="btn btn-sm btn-primary">Get started →</a></div></div> <section class="cmp-hero" style="margin-top:48px;"><div><p class="eyebrow"><span class="bracket">[</span> COMPARE · ${escape_html(c().versus)} <span class="bracket">]</span></p> <h1 style="margin-top:20px;">Rootprint<br/> <span class="faint" style="font-size:0.5em;letter-spacing:-0.01em;">vs</span><br/> ${escape_html(c().competitor)}</h1> <div class="cmp-versus" style="margin-top:28px;"><span class="pill brand">rootprint · self-hosted</span> <span>vs</span> <span class="pill">${escape_html(c().competitorPill)}</span></div></div> <div><p class="muted" style="font-size:16px;line-height:1.6;max-width:46ch;">${escape_html(c().tagline)}</p> <p class="cmp-fineprint">Last updated <span class="mono">${escape_html(c().updated)}</span> · written by the rootprint
+    $$renderer2.push(`<!--]--></div></div> <section class="cmp-hero" style="margin-top:48px;"><div><p class="eyebrow"><span class="bracket">[</span> COMPARE · ${escape_html(c().versus)} <span class="bracket">]</span></p> <h1 style="margin-top:20px;">Rootprint<br/> <span class="faint" style="font-size:0.5em;letter-spacing:-0.01em;">vs</span><br/> ${escape_html(c().competitor)}</h1> <div class="cmp-versus" style="margin-top:28px;"><span class="pill brand">rootprint · self-hosted</span> <span>vs</span> <span class="pill">${escape_html(c().competitorPill)}</span></div></div> <div><p class="muted" style="font-size:16px;line-height:1.6;max-width:46ch;">${escape_html(c().tagline)}</p> <p class="cmp-fineprint">Last updated <span class="mono">${escape_html(c().updated)}</span> · written by the rootprint
         team</p></div></section> <section class="cmp-tldr"><div><div class="lbl">TL;DR — COST</div> <div class="val">${escape_html(c().tldrCost)}</div></div> <div><div class="lbl">TL;DR — DATA</div> <div class="val">${escape_html(c().tldrData)}</div></div> <div><div class="lbl">TL;DR — TRADEOFF</div> <div class="val">${escape_html(c().tldrTrade)}</div></div></section> <section class="cmp-section"><p class="eyebrow"><span class="bracket">[</span> MATRIX <span class="bracket">]</span></p> <h2 style="margin-top:20px;">Feature-by-feature</h2> <p class="lead">A direct comparison on the surfaces most teams care about when picking a
-      logging platform.</p> <table class="cmp-table"><thead><tr><th>Capability</th><th>Rootprint</th><th>${escape_html(c().competitorCol)}</th></tr></thead><tbody><!--[-->`);
+      logging platform.</p> <p class="cmp-scroll-hint mono" aria-hidden="true">scroll horizontally →</p> <table class="cmp-table"><thead><tr><th>Capability</th><th>Rootprint</th><th>${escape_html(c().competitorCol)}</th></tr></thead><tbody><!--[-->`);
     const each_array_1 = ensure_array_like(capabilities);
     for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
       let capability = each_array_1[i];
@@ -94,7 +92,7 @@ function _page($$renderer, $$props) {
       let bullet = each_array_3[$$index_3];
       $$renderer2.push(`<li><span class="faint mono">○</span>${escape_html(bullet)}</li>`);
     }
-    $$renderer2.push(`<!--]--></ul></div></section> <section style="padding:64px 0;"><div class="hairline rounded-box" style="background:var(--base-200);padding:48px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;"><div><p class="eyebrow"><span class="bracket">[</span> NEXT <span class="bracket">]</span></p> <h3 style="margin-top:14px;font-size:28px;max-width:22ch;">Try Rootprint side-by-side with your current pipeline.</h3> <p class="muted" style="margin-top:10px;font-size:14px;">Dual-ship for a week. The cost line item makes the case.</p></div> <div style="display:flex;gap:12px;flex-wrap:wrap;"><a${attr("href", docsUrl)} class="btn btn-primary">Read the docs →</a> <a${attr("href", githubUrl)} class="btn btn-ghost">★ Star on GitHub</a></div></div></section></main>`);
+    $$renderer2.push(`<!--]--></ul></div></section> <section style="padding:64px 0;"><div class="hairline rounded-box" style="background:var(--base-200);padding:48px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;"><div><p class="eyebrow"><span class="bracket">[</span> NEXT <span class="bracket">]</span></p> <h3 style="margin-top:14px;font-size:28px;max-width:22ch;">Try Rootprint side-by-side with your current pipeline.</h3> <p class="muted" style="margin-top:10px;font-size:14px;">Dual-ship for a week and compare the storage line item for yourself.</p></div> <div style="display:flex;gap:12px;flex-wrap:wrap;"><a${attr("href", docsUrl)} class="btn btn-primary">Read the docs →</a> <a${attr("href", githubUrl)} class="btn btn-ghost">★ Star on GitHub</a></div></div></section></main>`);
   });
 }
 export {

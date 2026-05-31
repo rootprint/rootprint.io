@@ -13,9 +13,9 @@
         <Eyebrow label="ARCHITECTURE" />
         <h2>A Small Surface<br />Area For<br />Serious Logs</h2>
         <p class="muted arch-intro">
-          Rootprint is intentionally compact: collect with standards, index with
-          Quickwit, store on commodity object storage, and search from a UI your
-          team can understand at 3 a.m.
+          Rootprint is intentionally compact: collect with open standards, index
+          for fast full-text search, store on commodity object storage, and read
+          it all from a UI your team can understand at 3 a.m.
         </p>
       </div>
 

@@ -30,9 +30,9 @@
     "file": "chunks/false.js",
     "name": "false"
   },
-  "_index.CCqzIAZG.css": {
-    "file": "_app/immutable/assets/index.CCqzIAZG.css",
-    "src": "_index.CCqzIAZG.css"
+  "_index.CiJrV9N-.css": {
+    "file": "_app/immutable/assets/index.CiJrV9N-.css",
+    "src": "_index.CiJrV9N-.css"
   },
   "_index.js": {
     "file": "chunks/index.js",
@@ -44,7 +44,7 @@
       "_utils.js"
     ],
     "css": [
-      "_app/immutable/assets/index.CCqzIAZG.css"
+      "_app/immutable/assets/index.CiJrV9N-.css"
     ]
   },
   "_internal.js": {
@@ -54,6 +54,10 @@
       "_root.js",
       "_environment.js"
     ]
+  },
+  "_links.js": {
+    "file": "chunks/links.js",
+    "name": "links"
   },
   "_render-context.js": {
     "file": "chunks/render-context.js",
@@ -118,7 +122,7 @@
     "isEntry": true,
     "imports": [
       "_renderer.js",
-      "_config.js"
+      "_links.js"
     ],
     "css": [
       "_app/immutable/assets/_layout.DcyfjcOS.css"
@@ -131,7 +135,11 @@
     "isEntry": true,
     "imports": [
       "_renderer.js",
-      "_config.js"
+      "_config.js",
+      "_links.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CvQGyd3i.css"
     ]
   },
   "src/routes/(marketing)/+page.ts": {

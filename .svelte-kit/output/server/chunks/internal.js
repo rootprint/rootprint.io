@@ -30,7 +30,7 @@ const options = {
   service_worker_options: void 0,
   server_error_boundaries: false,
   templates: {
-    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n  <head>\n    <meta charset="utf-8" />\n    <link\n      rel="apple-touch-icon"\n      sizes="180x180"\n      href="' + assets + '/apple-touch-icon.png"\n    />\n    <link\n      rel="icon"\n      type="image/png"\n      sizes="32x32"\n      href="' + assets + '/favicon-32x32.png"\n    />\n    <link\n      rel="icon"\n      type="image/png"\n      sizes="16x16"\n      href="' + assets + '/favicon-16x16.png"\n    />\n    <link rel="manifest" href="' + assets + '/site.webmanifest" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <meta name="theme-color" content="#fbfbfa" />\n    <link\n      rel="preload"\n      href="' + assets + '/fonts/geist-sans-variable.woff2"\n      as="font"\n      type="font/woff2"\n      crossorigin\n    />\n    <link rel="preconnect" href="https://cloud.umami.is" crossorigin />\n    <script\n      defer\n      src="https://cloud.umami.is/script.js"\n      data-website-id="025ada60-2f3a-44f8-8268-5adb6cda927a"\n    ><\/script>\n    ' + head + '\n  </head>\n  <body\n    data-sveltekit-preload-data="hover"\n    style="min-height: 100vh; display: flex; flex-direction: column"\n  >\n    <div style="display: contents">' + body + "</div>\n  </body>\n</html>\n",
+    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n  <head>\n    <meta charset="utf-8" />\n    <link\n      rel="apple-touch-icon"\n      sizes="180x180"\n      href="' + assets + '/apple-touch-icon.png"\n    />\n    <link\n      rel="icon"\n      type="image/png"\n      sizes="32x32"\n      href="' + assets + '/favicon-32x32.png"\n    />\n    <link\n      rel="icon"\n      type="image/png"\n      sizes="16x16"\n      href="' + assets + '/favicon-16x16.png"\n    />\n    <link rel="manifest" href="' + assets + '/site.webmanifest" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <meta name="theme-color" content="#f7f5ef" />\n    <link\n      rel="preload"\n      href="' + assets + '/fonts/geist-sans-variable.woff2"\n      as="font"\n      type="font/woff2"\n      crossorigin\n    />\n    <link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n    <link\n      href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap"\n      rel="stylesheet"\n    />\n    <link rel="preconnect" href="https://cloud.umami.is" crossorigin />\n    <script\n      defer\n      src="https://cloud.umami.is/script.js"\n      data-website-id="025ada60-2f3a-44f8-8268-5adb6cda927a"\n    ><\/script>\n    ' + head + '\n  </head>\n  <body\n    data-sveltekit-preload-data="hover"\n    style="min-height: 100vh; display: flex; flex-direction: column"\n  >\n    <div style="display: contents">' + body + "</div>\n  </body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -102,7 +102,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "16ew2or"
+  version_hash: "1s5gto5"
 };
 async function get_hooks() {
   let handle;

@@ -10,8 +10,6 @@
   let mobileMenuOpen = $state(false);
   const mobileMenuId = "mobile-navigation";
 
-  const version = "v0.2.2";
-
   const navLinks = [
     { label: "Capabilities", href: "/#capabilities" },
     { label: "Developers", href: "/#developers" },
@@ -38,7 +36,6 @@
         style="width:24px;height:24px;display:block;"
       />
       <span class="brand-name">Rootprint</span>
-      <span class="faint" style="font-size:12px;">{version}</span>
     </a>
 
     <!-- Desktop center links -->

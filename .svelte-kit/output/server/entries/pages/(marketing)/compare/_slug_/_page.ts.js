@@ -27,7 +27,6 @@ const compareData = {
       { text: "Full-text + facets" },
       { text: "Vendor-managed, opaque", tone: "lose" },
       { text: "Per-GB indexed + retention tier", tone: "lose" },
-      { text: "Comparable on hot tier" },
       { mark: "r:YES", text: "Fully managed — no ops", tone: "win" },
       { mark: "r:YES", text: "Full suite", tone: "win" },
       { text: "Crosses third-party boundary", tone: "lose" },
@@ -61,7 +60,6 @@ const compareData = {
       { mark: "r:YES", text: "Full Lucene / ES DSL", tone: "win" },
       { text: "Hot nodes + frozen on S3", tone: "lose" },
       { text: "Node count + storage", tone: "lose" },
-      { text: "Fast, RAM-heavy" },
       { mark: "x:HEAVY", text: "Shards, JVM, capacity planning", tone: "lose" },
       { mark: "r:YES", text: "APM + general search", tone: "win" },
       { text: "Stays inside your infra" },
@@ -95,7 +93,6 @@ const compareData = {
       { mark: "x:LABELS", text: "Label filters + LogQL", tone: "lose" },
       { text: "Object storage (S3 / GCS)" },
       { text: "Object-storage rates" },
-      { text: "Varies with label cardinality" },
       {
         mark: "x:MULTI",
         text: "Distributor / ingester / querier",

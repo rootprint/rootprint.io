@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { reveal } from "$lib/actions/reveal";
   import { barField } from "$lib/actions/barField";
+  import { reveal } from "$lib/actions/reveal";
   import { docsUrl, githubUrl } from "$lib/links";
 </script>
 
-<!-- HERO — schematic / cursor-lit bar field -->
-<section class="wrap bp-corners hero" use:barField>
+<!-- HERO -->
+<section class="wrap hero" use:barField>
   <div class="bar-field" aria-hidden="true">
     <div class="bar-layer bar-base"></div>
     <div class="bar-layer bar-hi"></div>
@@ -31,13 +31,18 @@
     </div>
   </div>
 
-  <!-- Product screenshot (placeholder) -->
-  <div class="shot-frame hero-shot" use:reveal>
-    <div class="shot-bar">
-      <span class="shot-dots"><i></i><i></i><i></i></span>
-    </div>
-    <div class="shot" style="aspect-ratio:16/9;">
-      <span class="shot-tag">App screenshot · 1600 × 900</span>
+  <!-- Product screenshot -->
+  <div class="shot-frame hero-shot hero-shot-img" use:reveal>
+    <div class="shot" style="aspect-ratio:2530/1268;background:var(--base-100);">
+      <img
+        src="/images/hero-screenshot.png"
+        alt="Rootprint log explorer showing OpenTelemetry logs with severity histogram, faceted filters, and a live result table"
+        width="2530"
+        height="1268"
+        loading="eager"
+        decoding="async"
+        style="display:block;width:100%;height:100%;object-fit:cover;object-position:top center;"
+      />
     </div>
   </div>
 </section>
@@ -82,5 +87,6 @@
   .hero-shot {
     position: relative;
     margin: 36px 0 56px;
+    overflow: hidden;
   }
 </style>
