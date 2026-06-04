@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    WebsiteBaseUrl,
-    WebsiteDescription,
-    WebsiteName,
-  } from "./../../config";
+  import { WebsiteBaseUrl, WebsiteDescription, WebsiteName } from "$lib/config";
   import Hero from "$lib/components/home/Hero.svelte";
   import Capabilities from "$lib/components/home/Capabilities.svelte";
   import Interface from "$lib/components/home/Interface.svelte";
@@ -11,7 +7,7 @@
   import GetStarted from "$lib/components/home/GetStarted.svelte";
   import Compare from "$lib/components/home/Compare.svelte";
 
-  const pageTitle = `${WebsiteName} — Own Your Log Footprint`;
+  const pageTitle = `${WebsiteName} — Open-Source, Self-Hosted Log Management`;
   const ldJson = [
     {
       "@context": "https://schema.org",

@@ -2,9 +2,9 @@
 
 ## About
 
-Marketing site served at rootprint.io. SvelteKit with `adapter-static` — fully prerendered to static HTML. Independent from `apps/web` (the product UI) and `apps/docs` (Mintlify user docs).
+Marketing site served at rootprint.io. SvelteKit with `adapter-static` — fully prerendered to static HTML. The product UI and user docs live in separate projects.
 
-For repo-wide rules (Bun, Prettier, TS strict, no tests), see the root `AGENTS.md`. For Svelte 5 patterns and the Svelte MCP server, see the root `CLAUDE.md`.
+Standalone repo using Bun, Prettier (defaults), and TS strict.
 
 ## Stack
 
@@ -18,12 +18,12 @@ For repo-wide rules (Bun, Prettier, TS strict, no tests), see the root `AGENTS.m
 ## Run, Build, Check
 
 ```bash
-bun --filter landing dev          # vite dev
-bun --filter landing build        # static build
-bun --filter landing preview      # preview the built site
-bun --filter landing check        # svelte-kit sync && svelte-check
-bun --filter landing format       # prettier write (with prettier-plugin-svelte)
-bun --filter landing format_check # prettier check
+bun run dev          # vite dev
+bun run build        # static build
+bun run preview      # preview the built site
+bun run check        # svelte-kit sync && svelte-check
+bun run format       # prettier write (with prettier-plugin-svelte)
+bun run format_check # prettier check
 ```
 
 ## Source Layout
@@ -34,7 +34,7 @@ bun --filter landing format_check # prettier check
 | `src/lib/`                                             | Components and helpers shared across pages         |
 | `src/app.html`                                         | HTML shell                                         |
 | `src/app.css`                                          | Tailwind entry; global styles                      |
-| `src/config.ts`                                        | Site-level config (canonical URL, nav, etc.)       |
+| `src/lib/config.ts`                                    | Site-level config (canonical URL, nav, etc.)       |
 | `static/`                                              | Public assets served at the root                   |
 | `svelte.config.js`                                     | SvelteKit config (uses `adapter-static`)           |
 | `vite.config.ts`, `postcss.config.js`, `tsconfig.json` | Tooling configs                                    |
@@ -49,7 +49,7 @@ bun --filter landing format_check # prettier check
 - Use runes: `$props`, `$state`, `$derived`, `$effect`, `$bindable`.
 - Keep component scripts typed (`<script lang="ts">`).
 - Prefer small presentational components.
-- For deeper SvelteKit and Svelte 5 guidance, see the Svelte MCP server section in the root `CLAUDE.md`.
+- For deeper SvelteKit and Svelte 5 guidance, use the Svelte MCP server if available.
 
 ## Styling
 
@@ -59,11 +59,13 @@ bun --filter landing format_check # prettier check
 
 ## Tests
 
-No tests. Manual visual review via `bun --filter landing preview`.
+One source-assertion check in `tests/` (run with `bun test`) guards the Hero
+markup and color palette against regressions. Beyond that, do manual visual
+review via `bun run preview`.
 
 ## Conventions
 
-- TS strict (extends `tsconfig.base.json`).
-- Single quotes, tabs, no trailing commas (Prettier).
+- TS strict (extends `./.svelte-kit/tsconfig.json`).
+- Prettier defaults — double quotes, 2-space indent, semicolons, trailing commas. No custom Prettier config; run `bun run format`.
 - Prettier formats Svelte files automatically via `prettier-plugin-svelte`.
-- Use SvelteKit aliases (`$lib`, `$app`, `$env`) over deep relative paths.
+- Use SvelteKit aliases (`$lib`, `$app`, `$env`) over deep relative paths. Site config lives at `$lib/config`.

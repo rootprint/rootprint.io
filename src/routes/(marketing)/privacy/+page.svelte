@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { WebsiteBaseUrl, WebsiteName } from "../../../config";
+  import { WebsiteBaseUrl, WebsiteName } from "$lib/config";
 
   const pageTitle = `Privacy — ${WebsiteName}`;
   const description =
@@ -44,19 +44,23 @@
       class="mt-4 space-y-2 text-base text-neutral leading-relaxed list-disc pl-6"
     >
       <li>
-        <strong class="text-base-content font-semibold">No analytics scripts.</strong>
-        We don't load any analytics or measurement code, and we haven't enabled
-        visitor analytics on our host.
+        <strong class="text-base-content font-semibold"
+          >No analytics scripts.</strong
+        >
+        We don't load any analytics or measurement code, and we haven't enabled visitor
+        analytics on our host.
       </li>
       <li>
-        <strong class="text-base-content font-semibold">No tracking cookies.</strong>
-        We set no cookies. Our host may set a security cookie to protect the
-        site from bots and abuse; it isn't used to track you.
+        <strong class="text-base-content font-semibold"
+          >No tracking cookies.</strong
+        >
+        We set no cookies. Our host may set a security cookie to protect the site
+        from bots and abuse; it isn't used to track you.
       </li>
       <li>
         <strong class="text-base-content font-semibold">No profiling.</strong>
-        We don't combine, sell, or use visitor data to build profiles or
-        identify individuals.
+        We don't combine, sell, or use visitor data to build profiles or identify
+        individuals.
       </li>
       <li>
         <strong class="text-base-content font-semibold"

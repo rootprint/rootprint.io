@@ -31,7 +31,9 @@
   --color-base-100: oklch(97.2% 0.004 255); /* canvas — cold gray */
   --color-base-200: oklch(98.8% 0.002 255); /* elevated cards — near white */
   --color-base-300: oklch(93.5% 0.006 255); /* field bg / dividers */
-  --color-base-content: oklch(20% 0.012 255); /* default text — cool near-black */
+  --color-base-content: oklch(
+    20% 0.012 255
+  ); /* default text — cool near-black */
   --color-info: oklch(54% 0.16 248);
   --color-info-content: oklch(99% 0.004 95);
   --color-success: oklch(64% 0.19 155.5);
@@ -79,7 +81,9 @@
   --base-content-faint: oklch(60% 0.01 255);
 
   --primary: oklch(86% 0.204 155.5); /* brand green #27f795 */
-  --primary-strong: oklch(60% 0.19 155.5); /* readable deep green for text/hover */
+  --primary-strong: oklch(
+    60% 0.19 155.5
+  ); /* readable deep green for text/hover */
   --primary-content: oklch(24% 0.06 155.5);
 
   --secondary: oklch(42% 0.12 155.5);
@@ -106,8 +110,9 @@
 
   --font-sans: "Geist Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino,
-    Georgia, "Times New Roman", serif;
+  --font-serif:
+    "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
 }
 
 * {
@@ -1256,4 +1261,43 @@ a {
 /* Offset in-page anchor targets so headings clear the sticky header. */
 .anchor {
   scroll-margin-top: 72px;
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   Blog prose — align @tailwindcss/typography output with the blueprint
+   tokens (mono code, hairline borders, zero radius, deep-green links).
+   ─────────────────────────────────────────────────────────────────────── */
+.prose :where(h1, h2, h3, h4) {
+  font-family: var(--font-sans);
+  color: var(--base-content);
+}
+.prose :where(a) {
+  color: var(--primary-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.prose :where(code):not(:where(pre code)) {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--base-300);
+  padding: 0.15em 0.4em;
+  border-radius: 0;
+}
+/* Strip typography's default backtick pseudo-elements on inline code. */
+.prose :where(code):not(:where(pre code))::before,
+.prose :where(code):not(:where(pre code))::after {
+  content: "";
+}
+.prose :where(pre) {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 0;
+}
+.prose :where(blockquote) {
+  border-left-color: var(--hairline-strong);
+  font-style: normal;
+}
+.prose :where(hr) {
+  border-color: var(--hairline-strong);
 }

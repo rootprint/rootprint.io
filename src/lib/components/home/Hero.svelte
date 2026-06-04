@@ -13,8 +13,9 @@
 
   <div class="hero-copy">
     <h1 class="display-serif hero-title">
-      Own Your<br /><span class="grad-text">Log Footprint</span>
+      Self-Hosted<br /><span class="grad-text">Log Management</span>
     </h1>
+    <p class="mono hero-slogan">Own your log footprint.</p>
     <p class="muted hero-lede">
       Logs carry the shape of your systems. Rootprint keeps that operational
       fingerprint on infrastructure you control — fast search, OTLP-native,
@@ -30,7 +31,10 @@
 
   <!-- Product screenshot -->
   <div class="shot-frame hero-shot hero-shot-img" use:reveal>
-    <div class="shot" style="aspect-ratio:2530/1268;background:var(--base-100);">
+    <div
+      class="shot"
+      style="aspect-ratio:2530/1268;background:var(--base-100);"
+    >
       <img
         src="/images/hero-screenshot.png"
         alt="Rootprint log explorer showing OpenTelemetry logs with severity histogram, faceted filters, and a live result table"
@@ -64,6 +68,17 @@
   .hero-title {
     margin-top: 18px;
     font-size: clamp(44px, 5.5vw, 76px);
+  }
+
+  .hero-slogan {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--base-content);
+    opacity: 0.55;
   }
 
   .hero-lede {
