@@ -20,7 +20,7 @@
     </p>
     <a
       href="/"
-      class="inline-block bg-base-content text-base-100 px-6 py-2.5 rounded-lg text-sm font-medium btn-lift transition-[transform,box-shadow] duration-200 ease-out-custom mt-8"
+      class="btn btn-primary btn-lift mt-8"
     >
       Return home
     </a>

@@ -1,104 +1,91 @@
 <script lang="ts">
-  import { barField } from "$lib/actions/barField";
-  import { reveal } from "$lib/actions/reveal";
+  import { onDestroy } from "svelte";
   import { docsUrl, githubUrl } from "$lib/links";
+  import GithubIcon from "$lib/components/GithubIcon.svelte";
+  import { installTabs } from "$lib/data/home";
+
+  let active = $state(0);
+  let copied = $state(false);
+  let copyTimer: ReturnType<typeof setTimeout> | undefined;
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(installTabs[active].command);
+      copied = true;
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => (copied = false), 1500);
+    } catch {
+      /* clipboard unavailable — command stays selectable as text */
+    }
+  }
+
+  onDestroy(() => clearTimeout(copyTimer));
 </script>
 
-<!-- HERO -->
-<section class="wrap hero" use:barField>
-  <div class="bar-field" aria-hidden="true">
-    <div class="bar-layer bar-base"></div>
-    <div class="bar-layer bar-hi"></div>
-  </div>
-
-  <div class="hero-copy">
-    <h1 class="display-serif hero-title">
-      Self-Hosted<br /><span class="grad-text">Log Management</span>
-    </h1>
-    <p class="mono hero-slogan">Own your log footprint.</p>
-    <p class="muted hero-lede">
-      Logs carry the shape of your systems. Rootprint keeps that operational
-      fingerprint on infrastructure you control — fast search, OTLP-native,
-      object-storage-backed, Apache-2.0-licensed.
-    </p>
-    <div class="hero-actions">
-      <a href={docsUrl} class="btn btn-primary">
-        Try Rootprint <span aria-hidden="true">→</span>
-      </a>
-      <a href={githubUrl} class="btn btn-ghost">View on GitHub</a>
-    </div>
-  </div>
-
-  <!-- Product screenshot -->
-  <div class="shot-frame hero-shot hero-shot-img" use:reveal>
-    <div
-      class="shot"
-      style="aspect-ratio:2530/1268;background:var(--base-100);"
+<section style="padding: 64px 0 72px;">
+  <div class="wrap">
+    <h1 style="max-width: 22ch;">Own your logs. Search them fast.</h1>
+    <p
+      class="muted"
+      style="margin-top: 16px; max-width: 62ch; font-size: 15px;"
     >
+      Rootprint is open-source, self-hosted log management with
+      OpenTelemetry-native ingestion and full-text search. You pay for
+      retention at your object storage's $/GB.
+    </p>
+
+    <div class="install" style="margin-top: 32px;">
+      {#if installTabs.length > 1}
+        <div class="install-tabs">
+          {#each installTabs as tab, i}
+            <button
+              type="button"
+              aria-pressed={active === i}
+              onclick={() => (active = i)}
+            >
+              {tab.label}
+            </button>
+          {/each}
+        </div>
+      {/if}
+      <div class="install-cmd">
+        <span class="prompt" aria-hidden="true">$</span>
+        <code>{installTabs[active].command}</code>
+        <button type="button" class="copy-btn" aria-live="polite" onclick={copy}>
+          {copied ? "copied" : "copy"}
+        </button>
+      </div>
+    </div>
+
+    <div
+      style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;"
+    >
+      <a
+        href={docsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary"
+      >
+        Get Started
+      </a>
+      <a
+        href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-ghost"
+      >
+        <GithubIcon />
+        GitHub
+      </a>
+    </div>
+    <div class="frame" style="margin-top: 48px;">
       <img
         src="/images/hero-screenshot.png"
-        alt="Rootprint log explorer showing OpenTelemetry logs with severity histogram, faceted filters, and a live result table"
+        alt="Rootprint interface: full-text log search with field filters and a frequency histogram."
         width="2530"
         height="1268"
-        loading="eager"
-        decoding="async"
-        style="display:block;width:100%;height:100%;object-fit:cover;object-position:top center;"
+        fetchpriority="high"
       />
     </div>
   </div>
 </section>
-
-<style>
-  .hero {
-    position: relative;
-    padding-top: 48px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero-copy {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 36px 0;
-  }
-
-  .hero-title {
-    margin-top: 18px;
-    font-size: clamp(44px, 5.5vw, 76px);
-  }
-
-  .hero-slogan {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--hairline);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--base-content);
-    opacity: 0.55;
-  }
-
-  .hero-lede {
-    margin-top: 20px;
-    max-width: 54ch;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero-shot {
-    position: relative;
-    margin: 36px 0 56px;
-    overflow: hidden;
-  }
-</style>

@@ -1,11 +1,10 @@
 <script lang="ts">
   import { WebsiteBaseUrl, WebsiteDescription, WebsiteName } from "$lib/config";
   import Hero from "$lib/components/home/Hero.svelte";
-  import Capabilities from "$lib/components/home/Capabilities.svelte";
-  import Interface from "$lib/components/home/Interface.svelte";
+  import WhatIs from "$lib/components/home/WhatIs.svelte";
   import Architecture from "$lib/components/home/Architecture.svelte";
-  import GetStarted from "$lib/components/home/GetStarted.svelte";
-  import Compare from "$lib/components/home/Compare.svelte";
+  import Faq from "$lib/components/home/Faq.svelte";
+  import Cta from "$lib/components/home/Cta.svelte";
 
   const pageTitle = `${WebsiteName} — Open-Source, Self-Hosted Log Management`;
   const ldJson = [
@@ -67,8 +66,7 @@
 </svelte:head>
 
 <Hero />
-<Capabilities />
-<Interface />
+<WhatIs />
 <Architecture />
-<GetStarted />
-<Compare />
+<Faq />
+<Cta />

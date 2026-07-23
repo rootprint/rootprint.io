@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { WebsiteName } from "$lib/config";
   import { docsUrl, githubUrl } from "$lib/links";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
 
@@ -12,42 +11,40 @@
   const mobileMenuId = "mobile-navigation";
 
   const navLinks = [
-    { label: "Capabilities", href: "/#capabilities" },
-    { label: "Developers", href: "/#developers" },
-    { label: "Compare", href: "/#compare" },
-    { label: "Blog", href: "/blog/" },
+    { label: "Docs", href: docsUrl, external: true },
+    { label: "Architecture", href: "/#architecture", external: false },
+    { label: "FAQ", href: "/#faq", external: false },
   ];
 </script>
 
 <a href="#main-content" class="skip-to-content">Skip to content</a>
 
-<!-- Brutalist vertical frame rails -->
-<div class="vrail vrail-l" aria-hidden="true"></div>
-<div class="vrail vrail-r" aria-hidden="true"></div>
-
-<!-- ─── NAVIGATION — variant B: mono path-style ───────────────────────── -->
 <header
   class="hairline-b sticky top-0 z-40"
-  style="background: color-mix(in oklch, var(--base-100) 85%, transparent); backdrop-filter: blur(8px);"
+  style="background: color-mix(in oklch, var(--base-100) 92%, transparent); backdrop-filter: blur(8px);"
 >
   <nav class="wrap site-nav">
     <a href="/" class="brand">
       <img
         src="/rootprint-wordmark.png"
         alt="Rootprint"
-        style="height:26px;width:auto;display:block;"
+        style="height: 24px; width: auto; display: block;"
       />
     </a>
 
-    <!-- Desktop center links -->
-    <div class="site-nav-links" style="display:none;" data-nav-desktop>
+    <!-- Desktop links + actions -->
+    <div class="site-nav-links" style="display: none;" data-nav-desktop>
       {#each navLinks as link}
-        <a href={link.href}>{link.label}</a>
+        <a
+          href={link.href}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noopener noreferrer" : undefined}
+        >
+          {link.label}
+        </a>
       {/each}
     </div>
-
-    <!-- Desktop right actions -->
-    <div class="site-nav-actions" style="display:none;" data-nav-desktop>
+    <div class="site-nav-actions" style="display: none;" data-nav-desktop>
       <a
         href={githubUrl}
         target="_blank"
@@ -57,14 +54,6 @@
       >
         <GithubIcon />
         GitHub
-      </a>
-      <a
-        href={docsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-sm btn-ghost"
-      >
-        Docs
       </a>
       <a
         href={docsUrl}
@@ -80,7 +69,7 @@
     <button
       class="mono"
       type="button"
-      style="margin-left:auto;border:1px solid var(--hairline-strong);border-radius:var(--radius-field);padding:6px 10px;background:transparent;font-size:12px;"
+      style="margin-left: auto; border: 1px solid var(--hairline-strong); padding: 6px 10px; background: transparent; font-size: 12px;"
       onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
       aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
       aria-controls={mobileMenuId}
@@ -96,17 +85,19 @@
       id={mobileMenuId}
       aria-label="Mobile navigation"
       class="hairline-t mono"
-      style="background:var(--base-100);"
+      style="background: var(--base-100);"
       data-nav-mobile
     >
       <div
         class="wrap"
-        style="display:flex;flex-direction:column;gap:4px;padding-top:12px;padding-bottom:16px;font-size:13px;"
+        style="display: flex; flex-direction: column; gap: 4px; padding-top: 12px; padding-bottom: 16px; font-size: 13px;"
       >
         {#each navLinks as link}
           <a
             href={link.href}
-            style="padding:8px 0;color:var(--base-content);"
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            style="padding: 8px 0; color: var(--base-content);"
             onclick={() => (mobileMenuOpen = false)}>{link.label}</a
           >
         {/each}
@@ -114,22 +105,15 @@
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          style="padding:8px 0;color:var(--base-content);"
+          style="padding: 8px 0; color: var(--base-content);"
           onclick={() => (mobileMenuOpen = false)}>GitHub</a
         >
         <a
           href={docsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          style="padding:8px 0;color:var(--base-content);"
-          onclick={() => (mobileMenuOpen = false)}>Docs</a
-        >
-        <a
-          href={docsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
           class="btn btn-sm btn-primary"
-          style="margin-top:8px;justify-content:center;"
+          style="margin-top: 8px;"
         >
           Get Started
         </a>
@@ -144,29 +128,14 @@
 
 <div class="grow"></div>
 
-<!-- ─── FOOTER — variant B: brutalist sitemap grid ────────────────────── -->
-<div class="section-divider" aria-hidden="true"></div>
-<footer inert={mobileMenuOpen}>
-  <div class="rail-wrap">
+<footer class="hairline-t" inert={mobileMenuOpen}>
+  <div class="wrap" style="padding-left: 0; padding-right: 0;">
     <div class="footer-grid">
       <div class="footer-cell">
         <div class="mono faint footer-h">PRODUCT</div>
         <a href={docsUrl} class="footer-link">Docs</a>
-        <a href="/#capabilities" class="footer-link">Capabilities</a>
-        <a href="/blog/" class="footer-link">Blog</a>
+        <a href="/#capabilities" class="footer-link">What is Rootprint</a>
         <a href="{githubUrl}/releases" class="footer-link">Changelog</a>
-      </div>
-      <div class="footer-cell">
-        <div class="mono faint footer-h">PROJECT</div>
-        <a href={githubUrl} class="footer-link">GitHub</a>
-        <a href="{githubUrl}/issues" class="footer-link">Issues</a>
-        <a href="{githubUrl}/releases" class="footer-link">Releases</a>
-      </div>
-      <div class="footer-cell">
-        <div class="mono faint footer-h">COMPARE</div>
-        <a href="/compare/datadog/" class="footer-link">vs Datadog</a>
-        <a href="/compare/elastic/" class="footer-link">vs Elastic</a>
-        <a href="/compare/loki/" class="footer-link">vs Loki</a>
       </div>
       <div class="footer-cell">
         <div class="mono faint footer-h">DEVELOPERS</div>
@@ -178,27 +147,29 @@
         >
       </div>
       <div class="footer-cell">
-        <div class="mono faint footer-h">COMMUNITY</div>
+        <div class="mono faint footer-h">PROJECT</div>
+        <a href={githubUrl} class="footer-link">GitHub</a>
+        <a href="{githubUrl}/issues" class="footer-link">Issues</a>
         <a href="{githubUrl}/blob/main/CONTRIBUTING.md" class="footer-link"
           >Contributing</a
         >
         <a href="https://quickwit.io" class="footer-link">Quickwit</a>
-        <a href={githubUrl} class="footer-link">Star us</a>
       </div>
-      <div class="footer-cell">
-        <div class="mono faint footer-h">LEGAL</div>
-        <a href="{githubUrl}/blob/main/LICENSE" class="footer-link">License</a>
-        <a href="/privacy/" class="footer-link">Privacy</a>
-        <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link"
-          >Security</a
-        >
-      </div>
+    </div>
+    <div class="footer-meta">
+      <span>© Rootprint · Apache-2.0</span>
+      <a href="{githubUrl}/blob/main/LICENSE" class="footer-link faint"
+        >License</a
+      >
+      <a href="/privacy/" class="footer-link faint">Privacy</a>
+      <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link faint"
+        >Security</a
+      >
     </div>
   </div>
 </footer>
 
 <style>
-  /* Mono-path nav is desktop-only; mobile uses the [ menu ] toggle. */
   @media (min-width: 760px) {
     [data-nav-desktop] {
       display: flex !important;

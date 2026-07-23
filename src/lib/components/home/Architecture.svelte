@@ -1,80 +1,39 @@
 <script lang="ts">
-  import Eyebrow from "$lib/components/Eyebrow.svelte";
-  import { reveal } from "$lib/actions/reveal";
-  import { inView } from "$lib/actions/inView";
-  import { pipeline, valueCards } from "$lib/data/home";
+  import { docsUrl } from "$lib/links";
 </script>
 
-<!-- ARCHITECTURE -->
-<div class="section-divider" aria-hidden="true"></div>
-<section id="developers" class="anchor">
-  <div class="rail-wrap">
-    <div class="split-2 arch-head">
-      <div>
-        <Eyebrow label="ARCHITECTURE" />
-        <h2>A Small Surface<br />Area For<br />Serious Logs</h2>
-        <p class="muted arch-intro">
-          Rootprint is intentionally compact: collect with open standards, index
-          for fast full-text search, store on commodity object storage, and read
-          it all from a UI your team can understand at 3 a.m.
-        </p>
-      </div>
+<section class="section anchor" id="architecture">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="muted" style="margin-top: 14px; max-width: 62ch;">
+      Your apps send logs to Rootprint, which authenticates them and hands
+      them to the embedded search engine. The engine indexes straight to your
+      object storage and answers queries from the same place, so you run one
+      container instead of a cluster.
+    </p>
 
-      <div class="arch-pipeline" use:inView>
-        {#each pipeline as node, i}
-          <div class="arch-row" style="--i:{i}">
-            <div class="arch-num mono">{node.num}</div>
-            <div class="arch-label">{node.label}</div>
-            <div class="mono faint arch-side">{node.side}</div>
-          </div>
-          {#if i < pipeline.length - 1}
-            <div class="arch-arrow" style="--i:{i}"></div>
-          {/if}
-        {/each}
-      </div>
-    </div>
+    <pre
+      class="arch-ascii"
+      role="img"
+      aria-label="Architecture diagram: your apps and agents send logs to Rootprint, which handles auth, the UI, and the API. Rootprint forwards them to the embedded Quickwit engine for indexing and search, which stores everything on your S3-compatible object storage."
+      style="margin-top: 32px;">┌────────────────────────────────┐            ┌────────────────────────────────────┐
+│           your apps            │ ─────────▶ │             rootprint              │
+│            & agents            │            │          auth · ui · api           │
+└────────────────────────────────┘            └─────────────────┬──────────────────┘
+                                                                │
+┌────────────────────────────────┐            ┌─────────────────▼──────────────────┐
+│            your s3             │ ◀───────── │              quickwit              │
+│        s3 · gcs · minio        │            │           index · search           │
+└────────────────────────────────┘            └────────────────────────────────────┘</pre>
 
-    <div class="why-grid">
-      {#each valueCards as card, i}
-        <div class="why-cell" use:reveal={{ delay: i * 70 }}>
-          <p class="eyebrow why-meta">{card.meta}</p>
-          <h3 class="why-title">{card.title}</h3>
-          <p class="muted why-body">{card.body}</p>
-        </div>
-      {/each}
-    </div>
+    <a
+      href="{docsUrl}/architecture"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-ghost"
+      style="margin-top: 28px;"
+    >
+      Read the architecture docs →
+    </a>
   </div>
 </section>
-
-<style>
-  .arch-head {
-    padding: 96px 32px 64px;
-  }
-  .arch-head h2 {
-    margin-top: 20px;
-  }
-  .arch-intro {
-    margin-top: 24px;
-    max-width: 46ch;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .arch-pipeline {
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .why-meta {
-    color: var(--primary-strong);
-  }
-  .why-title {
-    margin-top: 14px;
-    font-size: 24px;
-  }
-  .why-body {
-    margin-top: 12px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-</style>
