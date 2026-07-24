@@ -393,11 +393,18 @@ a {
   color: var(--base-content);
   overflow-x: auto;
 }
+.arch-ascii-narrow {
+  display: none;
+}
 @media (max-width: 720px) {
-  .arch-ascii {
+  .arch-ascii-wide {
+    display: none;
+  }
+  .arch-ascii-narrow {
     display: block;
     padding: 20px;
-    font-size: 11px;
+    font-size: 13px;
+    overflow-x: hidden;
   }
 }
 
@@ -484,10 +491,15 @@ a {
 }
 @media (max-width: 720px) {
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
-  .footer-cell:nth-child(2n) {
+  .footer-cell {
     border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+    padding: 24px 24px 28px;
+  }
+  .footer-cell:last-child {
+    border-bottom: 0;
   }
 }
 

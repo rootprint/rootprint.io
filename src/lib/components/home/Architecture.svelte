@@ -13,7 +13,7 @@
     </p>
 
     <pre
-      class="arch-ascii"
+      class="arch-ascii arch-ascii-wide"
       role="img"
       aria-label="Architecture diagram: your apps and agents send logs to Rootprint, which handles auth, the UI, and the API. Rootprint forwards them to the embedded Quickwit engine for indexing and search, which stores everything on your S3-compatible object storage."
       style="margin-top: 32px;">┌────────────────────────────────┐            ┌────────────────────────────────────┐
@@ -25,6 +25,32 @@
 │            your s3             │ ◀───────── │              quickwit              │
 │        s3 · gcs · minio        │            │           index · search           │
 └────────────────────────────────┘            └────────────────────────────────────┘</pre>
+
+    <pre
+      class="arch-ascii arch-ascii-narrow"
+      role="img"
+      aria-label="Architecture diagram: your apps and agents send logs to Rootprint, which handles auth, the UI, and the API. Rootprint forwards them to the embedded Quickwit engine for indexing and search, which stores everything on your S3-compatible object storage."
+      style="margin-top: 32px;">┌──────────────────────────┐
+│    your apps & agents    │
+└──────────────────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│        rootprint         │
+│     auth · ui · api      │
+└──────────────────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│         quickwit         │
+│      index · search      │
+└──────────────────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│         your s3          │
+│     s3 · gcs · minio     │
+└──────────────────────────┘</pre>
 
     <a
       href="{docsUrl}/architecture"
