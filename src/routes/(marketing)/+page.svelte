@@ -49,9 +49,12 @@
   <meta property="og:url" content={WebsiteBaseUrl} />
   <meta property="og:type" content="website" />
   <meta property="og:image" content={socialImageUrl} />
-  <meta property="og:image:width" content="2530" />
-  <meta property="og:image:height" content="1269" />
-  <meta property="og:image:alt" content="Rootprint product interface preview" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta
+    property="og:image:alt"
+    content="Rootprint — own your logs, search them fast"
+  />
   <meta property="og:site_name" content={WebsiteName} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={pageTitle} />
@@ -59,7 +62,7 @@
   <meta name="twitter:image" content={socialImageUrl} />
   <meta
     name="twitter:image:alt"
-    content="Rootprint product interface preview"
+    content="Rootprint — own your logs, search them fast"
   />
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html jsonldScript}

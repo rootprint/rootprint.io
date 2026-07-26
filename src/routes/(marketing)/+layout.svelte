@@ -26,10 +26,11 @@
   <nav class="wrap site-nav">
     <a href="/" class="brand">
       <img
-        src="/rootprint-wordmark.png"
-        alt="Rootprint"
-        style="height: 24px; width: auto; display: block;"
+        src="/images/rp-mark-inverted-256.png"
+        alt=""
+        style="height: 24px; width: 24px; display: block;"
       />
+      <span class="brand-name">Rootprint</span>
     </a>
 
     <!-- Desktop links + actions -->
