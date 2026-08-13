@@ -21,8 +21,12 @@ export const whatIs: { title: string; body: string }[] = [
     body: "Query any field of any log line: filters, free text, histograms.",
   },
   {
+    title: "Traces beside the logs",
+    body: "Open a trace from the log that emitted it, or paste a trace ID into search: a waterfall with per-span attributes, events, and links back to correlated logs.",
+  },
+  {
     title: "OpenTelemetry native",
-    body: "OTLP endpoint and HTTP gateway with per-index bearer tokens.",
+    body: "OTLP endpoints for logs and traces, plus an NDJSON gateway for logs, with per-index bearer tokens.",
   },
   {
     title: "Object-storage economics",
@@ -46,6 +50,10 @@ export const faq: { q: string; a: string }[] = [
   {
     q: "What is Rootprint?",
     a: "Open-source, self-hosted log management: OpenTelemetry-native ingestion, full-text search built on Quickwit, and your own object storage as the database.",
+  },
+  {
+    q: "Does Rootprint handle traces?",
+    a: `Yes. Send OTLP spans to <code>POST /v1/traces</code> with an existing ingest key. From there, open a trace from any log carrying its trace ID, or paste the trace ID into the search box. Spans land in one index and a trace stays openable for as long as they are retained. There is no span search or trace list yet: traces are reached from a log or by ID.`,
   },
   {
     q: "How do I self-host it?",

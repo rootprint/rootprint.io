@@ -30,8 +30,9 @@
       style="margin-top: 16px; max-width: 62ch; font-size: 15px;"
     >
       Rootprint is open-source, self-hosted log management with
-      OpenTelemetry-native ingestion and full-text search. You pay for
-      retention at your object storage's $/GB.
+      OpenTelemetry-native ingestion, full-text search, and traces next to the
+      logs that emitted them. You pay for retention at your object storage's
+      $/GB.
     </p>
 
     <div class="install" style="margin-top: 32px;">
