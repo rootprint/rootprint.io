@@ -289,7 +289,6 @@ a {
 .install {
   border: 1px solid var(--hairline-strong);
   background: var(--base-200);
-  max-width: 640px;
 }
 .install-tabs {
   display: flex;
@@ -487,7 +486,6 @@ a {
   align-items: baseline;
   gap: 16px;
   padding: 16px 24px;
-  border-top: 1px solid var(--hairline);
   font-size: 12px;
   color: var(--base-content-faint);
 }
@@ -506,6 +504,13 @@ a {
   }
   .footer-cell:last-child {
     border-bottom: 0;
+  }
+}
+
+/* Demo instance needs a desktop-sized viewport, so we don't link it on phones. */
+@media (max-width: 759px) {
+  .desktop-only {
+    display: none !important;
   }
 }
 

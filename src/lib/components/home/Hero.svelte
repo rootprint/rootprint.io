@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
-  import { docsUrl, githubUrl } from "$lib/links";
+  import { demoUrl, docsUrl, githubUrl } from "$lib/links";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
   import { installTabs } from "$lib/data/home";
 
@@ -35,6 +35,36 @@
       $/GB.
     </p>
 
+    <div
+      style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;"
+    >
+      <a
+        href={demoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary btn-lift desktop-only"
+      >
+        Try the live demo
+      </a>
+      <a
+        href={docsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-ghost"
+      >
+        Get Started
+      </a>
+      <a
+        href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-ghost"
+      >
+        <GithubIcon />
+        GitHub
+      </a>
+    </div>
+
     <div class="install" style="margin-top: 32px;">
       {#if installTabs.length > 1}
         <div class="install-tabs">
@@ -56,28 +86,6 @@
           {copied ? "copied" : "copy"}
         </button>
       </div>
-    </div>
-
-    <div
-      style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;"
-    >
-      <a
-        href={docsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-primary"
-      >
-        Get Started
-      </a>
-      <a
-        href={githubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-ghost"
-      >
-        <GithubIcon />
-        GitHub
-      </a>
     </div>
     <div class="frame" style="margin-top: 48px;">
       <img

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { docsUrl, githubUrl } from "$lib/links";
+  import { demoUrl, docsUrl, githubUrl } from "$lib/links";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
 
   interface Props {
@@ -57,12 +57,12 @@
         GitHub
       </a>
       <a
-        href={docsUrl}
+        href={demoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-sm btn-primary"
+        class="btn btn-sm btn-primary btn-lift"
       >
-        Get Started
+        Live demo
       </a>
     </div>
 
@@ -110,13 +110,14 @@
           onclick={() => (mobileMenuOpen = false)}>GitHub</a
         >
         <a
-          href={docsUrl}
+          href={demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-sm btn-primary"
+          class="btn btn-sm btn-primary desktop-only"
           style="margin-top: 8px;"
+          onclick={() => (mobileMenuOpen = false)}
         >
-          Get Started
+          Live demo
         </a>
       </div>
     </nav>
@@ -134,6 +135,7 @@
     <div class="footer-grid">
       <div class="footer-cell">
         <div class="mono faint footer-h">PRODUCT</div>
+        <a href={demoUrl} class="footer-link desktop-only">Live demo</a>
         <a href={docsUrl} class="footer-link">Docs</a>
         <a href="/#capabilities" class="footer-link">What is Rootprint</a>
         <a href="{githubUrl}/releases" class="footer-link">Changelog</a>
@@ -157,15 +159,19 @@
         <a href="https://quickwit.io" class="footer-link">Quickwit</a>
       </div>
     </div>
-    <div class="footer-meta">
-      <span>© Rootprint · Apache-2.0</span>
-      <a href="{githubUrl}/blob/main/LICENSE" class="footer-link faint"
-        >License</a
-      >
-      <a href="/privacy/" class="footer-link faint">Privacy</a>
-      <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link faint"
-        >Security</a
-      >
+  </div>
+  <div class="hairline-t">
+    <div class="wrap" style="padding-left: 0; padding-right: 0;">
+      <div class="footer-meta">
+        <span>© Rootprint · Apache-2.0</span>
+        <a href="{githubUrl}/blob/main/LICENSE" class="footer-link faint"
+          >License</a
+        >
+        <a href="/privacy/" class="footer-link faint">Privacy</a>
+        <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link faint"
+          >Security</a
+        >
+      </div>
     </div>
   </div>
 </footer>

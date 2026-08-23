@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { docsUrl, githubUrl } from "$lib/links";
+  import { demoUrl, docsUrl, githubUrl } from "$lib/links";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
 </script>
 
@@ -13,10 +13,18 @@
       style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;"
     >
       <a
+        href={demoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary btn-lift desktop-only"
+      >
+        Try the live demo
+      </a>
+      <a
         href={docsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-primary"
+        class="btn btn-ghost"
       >
         Get Started
       </a>
