@@ -8,8 +8,9 @@
     <p class="muted" style="margin-top: 14px; max-width: 62ch;">
       Your apps send logs and traces to Rootprint, which authenticates them and
       hands them to the embedded search engine. The engine indexes straight to your
-      object storage and answers queries from the same place, so you run one
-      container instead of a cluster.
+      object storage and answers queries from the same place. The whole stack
+      is three containers: Rootprint, Quickwit, and Postgres for accounts and
+      settings.
     </p>
 
     <pre

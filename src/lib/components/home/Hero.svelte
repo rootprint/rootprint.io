@@ -2,9 +2,10 @@
   import { onDestroy } from "svelte";
   import { demoUrl, docsUrl, githubUrl } from "$lib/links";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
-  import { installTabs } from "$lib/data/home";
+  import { installTabs, shots } from "$lib/data/home";
 
   let active = $state(0);
+  let shot = $state(0);
   let copied = $state(false);
   let copyTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -29,10 +30,10 @@
       class="muted"
       style="margin-top: 16px; max-width: 62ch; font-size: 15px;"
     >
-      Rootprint is open-source, self-hosted log management with
-      OpenTelemetry-native ingestion, full-text search, and traces next to the
-      logs that emitted them. You pay for retention at your object storage's
-      $/GB.
+      Rootprint is an open-source, self-hosted platform for logs and traces:
+      OpenTelemetry-native ingestion, full-text search, trace waterfalls, and a
+      service health dashboard, indexed straight to your own object storage.
+      Retention costs whatever your bucket costs.
     </p>
 
     <div
@@ -52,7 +53,7 @@
         rel="noopener noreferrer"
         class="btn btn-ghost"
       >
-        Get Started
+        Get started
       </a>
       <a
         href={githubUrl}
@@ -82,19 +83,39 @@
       <div class="install-cmd">
         <span class="prompt" aria-hidden="true">$</span>
         <code>{installTabs[active].command}</code>
-        <button type="button" class="copy-btn" aria-live="polite" onclick={copy}>
+        <button
+          type="button"
+          class="copy-btn"
+          aria-live="polite"
+          onclick={copy}
+        >
           {copied ? "copied" : "copy"}
         </button>
       </div>
     </div>
     <div class="frame" style="margin-top: 48px;">
-      <img
-        src="/images/hero-screenshot.png"
-        alt="Rootprint interface: full-text log search with field filters and a frequency histogram."
-        width="2530"
-        height="1268"
-        fetchpriority="high"
-      />
+      <div class="install-tabs">
+        {#each shots as s, i}
+          <button
+            type="button"
+            aria-pressed={shot === i}
+            onclick={() => (shot = i)}
+          >
+            {s.label}
+          </button>
+        {/each}
+      </div>
+      {#each shots as s, i}
+        <img
+          src={s.src}
+          alt={s.alt}
+          width="2160"
+          height="1350"
+          fetchpriority={i === 0 ? "high" : undefined}
+          loading={i === 0 ? undefined : "lazy"}
+          hidden={shot !== i}
+        />
+      {/each}
     </div>
   </div>
 </section>

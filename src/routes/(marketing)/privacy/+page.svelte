@@ -30,11 +30,11 @@
     </h1>
 
     <p class="mt-6 text-base text-neutral leading-relaxed">
-      We don't add any analytics, advertising, or tracking to this site — no
+      We don't add any analytics, advertising, or tracking to this site. No
       analytics scripts, no tracking cookies, and we don't build a profile of
       who visits. The one thing to know: like any website, this site is served
-      by a hosting provider (Cloudflare), and serving a page necessarily
-      involves some standard technical data. Details below.
+      by a hosting provider (Cloudflare), and serving a page involves some
+      standard technical data. Details below.
     </p>
 
     <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
@@ -74,14 +74,14 @@
     </h2>
     <p class="mt-4 text-base text-neutral leading-relaxed">
       This site is served through Cloudflare. To deliver and protect the site,
-      Cloudflare processes standard connection data — including your IP address
-      and basic request details — in its server logs for a limited period.
+      Cloudflare processes standard connection data, including your IP address
+      and basic request details, in its server logs for a limited period.
       Cloudflare acts as a data processor on our behalf and doesn't use this
       data for its own advertising. See <a
         href="https://www.cloudflare.com/privacypolicy/"
         target="_blank"
         rel="noopener noreferrer"
-        class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200 ease-out-custom"
+        class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200"
         >Cloudflare's Privacy Policy</a
       >.
     </p>
@@ -103,11 +103,11 @@
         href="https://github.com/rootprint/rootprint/issues"
         target="_blank"
         rel="noopener noreferrer"
-        class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200 ease-out-custom"
+        class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200"
         >Open an issue on GitHub</a
       >.
     </p>
 
-    <p class="mt-12 text-sm text-neutral/70">Last updated: 2026-05-31</p>
+    <p class="mt-12 text-sm text-neutral/70">Last updated: 2026-09-18</p>
   </div>
 </article>

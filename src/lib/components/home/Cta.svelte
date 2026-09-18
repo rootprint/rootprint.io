@@ -7,7 +7,7 @@
   <div class="wrap" style="text-align: center;">
     <h2>Run it on your own terms</h2>
     <p class="muted" style="margin-top: 12px;">
-      One container and your S3 bucket, running in ten minutes.
+      Docker Compose and an S3 bucket. Running in about five minutes.
     </p>
     <div
       style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;"
@@ -26,7 +26,7 @@
         rel="noopener noreferrer"
         class="btn btn-ghost"
       >
-        Get Started
+        Get started
       </a>
       <a
         href={githubUrl}

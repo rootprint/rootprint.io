@@ -109,16 +109,6 @@
           style="padding: 8px 0; color: var(--base-content);"
           onclick={() => (mobileMenuOpen = false)}>GitHub</a
         >
-        <a
-          href={demoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-sm btn-primary desktop-only"
-          style="margin-top: 8px;"
-          onclick={() => (mobileMenuOpen = false)}
-        >
-          Live demo
-        </a>
       </div>
     </nav>
   {/if}
@@ -136,18 +126,20 @@
       <div class="footer-cell">
         <div class="mono faint footer-h">PRODUCT</div>
         <a href={demoUrl} class="footer-link desktop-only">Live demo</a>
-        <a href={docsUrl} class="footer-link">Docs</a>
-        <a href="/#capabilities" class="footer-link">What is Rootprint</a>
-        <a href="{githubUrl}/releases" class="footer-link">Changelog</a>
+        <a href="/#capabilities" class="footer-link">Features</a>
+        <a href="/#architecture" class="footer-link">Architecture</a>
+        <a href="/#faq" class="footer-link">FAQ</a>
+        <a href="{githubUrl}/blob/main/CHANGELOG.md" class="footer-link">Changelog</a>
       </div>
       <div class="footer-cell">
-        <div class="mono faint footer-h">DEVELOPERS</div>
-        <a href="{docsUrl}/api/overview" class="footer-link">API reference</a>
+        <div class="mono faint footer-h">DOCS</div>
         <a href="{docsUrl}/quickstart" class="footer-link">Quickstart</a>
-        <a href="{docsUrl}/send-logs/otlp" class="footer-link">OTLP setup</a>
+        <a href="{docsUrl}/send-logs/overview" class="footer-link">Send logs</a>
+        <a href="{docsUrl}/traces/overview" class="footer-link">Traces</a>
         <a href="{docsUrl}/search/query-language" class="footer-link"
           >Query language</a
         >
+        <a href="{docsUrl}/api/overview" class="footer-link">API reference</a>
       </div>
       <div class="footer-cell">
         <div class="mono faint footer-h">PROJECT</div>
@@ -156,7 +148,7 @@
         <a href="{githubUrl}/blob/main/CONTRIBUTING.md" class="footer-link"
           >Contributing</a
         >
-        <a href="https://quickwit.io" class="footer-link">Quickwit</a>
+        <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link">Security</a>
       </div>
     </div>
   </div>
@@ -164,13 +156,11 @@
     <div class="wrap" style="padding-left: 0; padding-right: 0;">
       <div class="footer-meta">
         <span>© Rootprint · Apache-2.0</span>
+        <a href="https://quickwit.io" class="footer-link faint">Built on Quickwit</a>
         <a href="{githubUrl}/blob/main/LICENSE" class="footer-link faint"
           >License</a
         >
         <a href="/privacy/" class="footer-link faint">Privacy</a>
-        <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link faint"
-          >Security</a
-        >
       </div>
     </div>
   </div>

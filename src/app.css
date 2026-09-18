@@ -284,7 +284,6 @@ a {
   width: 100%;
   height: auto;
 }
-
 /* ── Install command widget (hero) ───────────────────────────────────── */
 .install {
   border: 1px solid var(--hairline-strong);

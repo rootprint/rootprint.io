@@ -1,12 +1,13 @@
 <script lang="ts">
   import { WebsiteBaseUrl, WebsiteDescription, WebsiteName } from "$lib/config";
+  import { githubUrl } from "$lib/links";
   import Hero from "$lib/components/home/Hero.svelte";
   import WhatIs from "$lib/components/home/WhatIs.svelte";
   import Architecture from "$lib/components/home/Architecture.svelte";
   import Faq from "$lib/components/home/Faq.svelte";
   import Cta from "$lib/components/home/Cta.svelte";
 
-  const pageTitle = `${WebsiteName} — Open-Source, Self-Hosted Log Management`;
+  const pageTitle = `${WebsiteName} — Open-Source, Self-Hosted Logs and Traces`;
   const ldJson = [
     {
       "@context": "https://schema.org",
@@ -20,7 +21,7 @@
       name: WebsiteName,
       url: WebsiteBaseUrl,
       logo: `${WebsiteBaseUrl}/logo.png`,
-      sameAs: ["https://github.com/rootprint/rootprint"],
+      sameAs: [githubUrl],
     },
     {
       "@context": "https://schema.org",
@@ -43,10 +44,10 @@
 <svelte:head>
   <title>{pageTitle}</title>
   <meta name="description" content={WebsiteDescription} />
-  <link rel="canonical" href={WebsiteBaseUrl} />
+  <link rel="canonical" href="{WebsiteBaseUrl}/" />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={WebsiteDescription} />
-  <meta property="og:url" content={WebsiteBaseUrl} />
+  <meta property="og:url" content="{WebsiteBaseUrl}/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content={socialImageUrl} />
   <meta property="og:image:width" content="1200" />
