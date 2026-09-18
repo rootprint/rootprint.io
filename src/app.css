@@ -462,9 +462,10 @@ a {
 }
 .footer-h {
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.14em;
   margin-bottom: 8px;
-  color: var(--base-content-faint);
+  color: var(--base-content);
 }
 .footer-link {
   font-size: 13px;
@@ -499,10 +500,20 @@ a {
   .footer-cell {
     border-right: 0;
     border-bottom: 1px solid var(--hairline);
-    padding: 24px 24px 28px;
+    padding: 16px 24px 18px;
+    flex-flow: row wrap;
+    align-items: baseline;
+    gap: 4px 20px;
   }
   .footer-cell:last-child {
     border-bottom: 0;
+  }
+  .footer-h {
+    flex-basis: 100%;
+    margin-bottom: 0;
+  }
+  .footer-meta {
+    gap: 8px 16px;
   }
 }
 

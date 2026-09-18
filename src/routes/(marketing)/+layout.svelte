@@ -124,7 +124,7 @@
   <div class="wrap" style="padding-left: 0; padding-right: 0;">
     <div class="footer-grid">
       <div class="footer-cell">
-        <div class="mono faint footer-h">PRODUCT</div>
+        <div class="mono footer-h">PRODUCT</div>
         <a href={demoUrl} class="footer-link desktop-only">Live demo</a>
         <a href="/#capabilities" class="footer-link">Features</a>
         <a href="/#architecture" class="footer-link">Architecture</a>
@@ -132,7 +132,7 @@
         <a href="{githubUrl}/blob/main/CHANGELOG.md" class="footer-link">Changelog</a>
       </div>
       <div class="footer-cell">
-        <div class="mono faint footer-h">DOCS</div>
+        <div class="mono footer-h">DOCS</div>
         <a href="{docsUrl}/quickstart" class="footer-link">Quickstart</a>
         <a href="{docsUrl}/send-logs/overview" class="footer-link">Send logs</a>
         <a href="{docsUrl}/traces/overview" class="footer-link">Traces</a>
@@ -142,7 +142,7 @@
         <a href="{docsUrl}/api/overview" class="footer-link">API reference</a>
       </div>
       <div class="footer-cell">
-        <div class="mono faint footer-h">PROJECT</div>
+        <div class="mono footer-h">PROJECT</div>
         <a href={githubUrl} class="footer-link">GitHub</a>
         <a href="{githubUrl}/issues" class="footer-link">Issues</a>
         <a href="{githubUrl}/blob/main/CONTRIBUTING.md" class="footer-link"
