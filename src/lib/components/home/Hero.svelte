@@ -32,8 +32,8 @@
     >
       Rootprint is an open-source, self-hosted platform for logs and traces:
       OpenTelemetry-native ingestion, full-text search, trace waterfalls, and a
-      service health dashboard, indexed straight to your own object storage.
-      Retention costs whatever your bucket costs.
+      service health dashboard, indexed straight to your own S3-compatible
+      object storage. Retention costs whatever your bucket costs.
     </p>
 
     <div
