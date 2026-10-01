@@ -1,6 +1,8 @@
 <script lang="ts">
   import { demoUrl, docsUrl, githubUrl } from "$lib/links";
+  import { comparisonLinks } from "$lib/data/comparison-links";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
+  import GithubStars from "$lib/components/GithubStars.svelte";
 
   interface Props {
     children?: import("svelte").Snippet;
@@ -12,6 +14,7 @@
 
   const navLinks = [
     { label: "Docs", href: docsUrl, external: true },
+    { label: "Compare", href: "/compare/", external: false },
     { label: "Architecture", href: "/#architecture", external: false },
     { label: "FAQ", href: "/#faq", external: false },
   ];
@@ -28,7 +31,9 @@
       <img
         src="/images/rp-mark-inverted-256.png"
         alt=""
-        style="height: 24px; width: 24px; display: block;"
+        width="24"
+        height="24"
+        class="block"
       />
       <span class="brand-name">Rootprint</span>
     </a>
@@ -51,10 +56,10 @@
         target="_blank"
         rel="noopener noreferrer"
         class="btn btn-sm btn-ghost"
-        aria-label="GitHub"
       >
         <GithubIcon />
         GitHub
+        <GithubStars />
       </a>
       <a
         href={demoUrl}
@@ -129,7 +134,9 @@
         <a href="/#capabilities" class="footer-link">Features</a>
         <a href="/#architecture" class="footer-link">Architecture</a>
         <a href="/#faq" class="footer-link">FAQ</a>
-        <a href="{githubUrl}/blob/main/CHANGELOG.md" class="footer-link">Changelog</a>
+        <a href="{githubUrl}/blob/main/CHANGELOG.md" class="footer-link"
+          >Changelog</a
+        >
       </div>
       <div class="footer-cell">
         <div class="mono footer-h">DOCS</div>
@@ -142,13 +149,23 @@
         <a href="{docsUrl}/api/overview" class="footer-link">API reference</a>
       </div>
       <div class="footer-cell">
+        <div class="mono footer-h">COMPARE</div>
+        {#each comparisonLinks as comparison (comparison.slug)}
+          <a href="/compare/{comparison.slug}/" class="footer-link"
+            >vs {comparison.navLabel}</a
+          >
+        {/each}
+      </div>
+      <div class="footer-cell">
         <div class="mono footer-h">PROJECT</div>
         <a href={githubUrl} class="footer-link">GitHub</a>
         <a href="{githubUrl}/issues" class="footer-link">Issues</a>
         <a href="{githubUrl}/blob/main/CONTRIBUTING.md" class="footer-link"
           >Contributing</a
         >
-        <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link">Security</a>
+        <a href="{githubUrl}/blob/main/SECURITY.md" class="footer-link"
+          >Security</a
+        >
       </div>
     </div>
   </div>
@@ -156,7 +173,9 @@
     <div class="wrap" style="padding-left: 0; padding-right: 0;">
       <div class="footer-meta">
         <span>© Rootprint · Apache-2.0</span>
-        <a href="https://quickwit.io" class="footer-link faint">Built on Quickwit</a>
+        <a href="https://quickwit.io" class="footer-link faint"
+          >Built on Quickwit</a
+        >
         <a href="{githubUrl}/blob/main/LICENSE" class="footer-link faint"
           >License</a
         >

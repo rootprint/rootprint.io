@@ -1,5 +1,6 @@
 /** Content for the marketing home page sections. Kept out of the markup so
  *  copy can be edited without touching layout. */
+import { ScopeLine } from "$lib/config";
 import { docsUrl, githubUrl } from "$lib/links";
 
 /* NOTE: the compose command below matches docs.rootprint.io/quickstart.
@@ -15,28 +16,32 @@ export const installTabs: { label: string; command: string }[] = [
 
 export const whatIs: { title: string; body: string }[] = [
   {
-    title: "Full-text search",
-    body: "Query any field of any log line: free text, filters, histograms, saved views, share links.",
+    title: "Find any line",
+    body: "Rootprint indexes the full text of every log, so you can search without knowing the service, stream, or label. Add field filters, histograms, saved views, and share links.",
   },
   {
-    title: "Traces beside the logs",
-    body: "Open a trace from the log that emitted it, or paste a trace ID into search. The waterfall shows per-span timing, attributes, and events, and every span links back to its logs.",
+    title: "Your bucket is the database",
+    body: "Indexes live in your S3, GCS, R2, MinIO, or Azure Blob bucket. A year of retention costs a year of storage, with no extra nodes and no ingest fees.",
+  },
+  {
+    title: "Logs and traces, one place",
+    body: "Open a trace from the log that emitted it, or paste a trace ID into search. The trace page shows per-span timing, attributes, and events, groups database calls by query, and links every span back to its logs.",
+  },
+  {
+    title: "Trace explorer",
+    body: "Chart span volume, error rate, and p50/p95/p99 latency, rank the busiest operations, and filter spans by service, operation, duration, and status.",
   },
   {
     title: "Service health",
-    body: "Request rate, error rate, and p95 latency per service, endpoints ranked by time spent, and the failing spans behind each error.",
+    body: "Every service gets its own page with request rate, error rate, p95 latency, operations, dependencies, and errors, each linking to the matching traces.",
   },
   {
     title: "OpenTelemetry native",
-    body: "OTLP for logs and traces from the Collector, Vector, Fluent Bit, or anything else that speaks OTLP, plus a plain HTTP endpoint for logs. Ingest keys are scoped per index.",
-  },
-  {
-    title: "Retention at storage prices",
-    body: "Keeping a year of logs costs a year of S3 storage. No extra nodes, no ingest fees.",
+    body: "OTLP for logs and traces from the Collector, Vector, Fluent Bit, or anything else that speaks OTLP, plus a plain HTTP endpoint for logs. Setup guides for nine integrations start from your ingest key, scoped per index.",
   },
   {
     title: "Self-hosted",
-    body: "Runs inside your network. Sign in with Google or GitHub, invite your team, scope their access. Nothing phones home.",
+    body: "Runs inside your network. Sign in with Google, GitHub, or any OpenID Connect provider, invite your team, scope their access. Nothing phones home.",
   },
   {
     title: "Stateless search nodes",
@@ -57,24 +62,24 @@ export const shots: { label: string; src: string; alt: string }[] = [
   },
   {
     label: "traces",
-    src: "/images/trace-waterfall.webp",
-    alt: "Trace waterfall: spans from five services nested by parent, with timing bars, a span detail panel, and a button to open the logs for the selected span.",
+    src: "/images/trace-explorer.webp",
+    alt: "Trace explorer: filters for service, duration, status, and root spans above latency, error rate, and span volume charts, and a table of the busiest operations with span counts, error rates, and p95 latency.",
   },
   {
     label: "service health",
     src: "/images/service-health.webp",
-    alt: "Service health dashboard: error spans, request count, throughput, error rate, and slowest p95 tiles above p95 latency, request rate, and error rate charts.",
+    alt: "Service health: error spans, requests, throughput, error rate, and slowest p95 tiles above p95 latency by service, request rate, and error rate charts, with a table of services ranked by error rate.",
   },
 ];
 
 export const faq: { q: string; a: string }[] = [
   {
     q: "What is Rootprint?",
-    a: "Open-source, self-hosted logs and traces: OpenTelemetry-native ingestion, full-text search built on Quickwit, trace waterfalls, a service health dashboard, and your own object storage as the database.",
+    a: "Open-source log and trace search that runs on your own object storage. Built on Quickwit, it indexes the full text of every log, so you can find any line without designing labels first. Indexes live in your S3, GCS, R2, MinIO, or Azure Blob bucket, so a year of retention costs a year of storage. Send data over OpenTelemetry, open a trace from any log, and see request rate, errors, and p95 latency for every service.",
   },
   {
     q: "Does Rootprint handle traces?",
-    a: `Yes. Send OTLP spans to <code>POST /v1/traces</code> with an existing ingest key. Open a trace from any log carrying its trace ID, or paste the ID into the search box, and you get a waterfall with per-span attributes, events, and links back to the correlated logs. The service health dashboard adds request rate, error rate, and p95 latency per service, plus the failing spans behind those errors.`,
+    a: `Yes. Send OTLP spans to <code>POST /v1/traces</code> with an existing ingest key. The trace explorer charts span volume, error rate, and latency, and filters spans by service, operation, duration, and status. Open a trace from any log carrying its trace ID, or paste the ID into the search box, and you get a waterfall with per-span attributes, events, database calls, and links back to the correlated logs. Each service has its own page with request rate, error rate, p95 latency, operations, dependencies, and errors.`,
   },
   {
     q: "How do I self-host it?",
@@ -91,5 +96,9 @@ export const faq: { q: string; a: string }[] = [
   {
     q: "Is it production-ready?",
     a: `Rootprint is pre-1.0 and under active development. See the <a href="${githubUrl}/blob/main/CHANGELOG.md">changelog</a> for the current release status. The engine underneath is Quickwit, which runs petabyte-scale log search in production.`,
+  },
+  {
+    q: "Does it do metrics or alerting?",
+    a: `No. ${ScopeLine}`,
   },
 ];

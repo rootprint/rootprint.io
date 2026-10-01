@@ -1,7 +1,13 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { WebsiteBaseUrl } from "$lib/config";
+import { comparisonLinks } from "$lib/data/comparison-links";
 
-const routes = ["/", "/privacy/"];
+const routes = [
+  "/",
+  "/privacy/",
+  "/compare/",
+  ...comparisonLinks.map(({ slug }) => `/compare/${slug}/`),
+];
 
 export const prerender = true;
 

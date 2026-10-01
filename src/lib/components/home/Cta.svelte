@@ -1,6 +1,7 @@
 <script lang="ts">
   import { demoUrl, docsUrl, githubUrl } from "$lib/links";
   import GithubIcon from "$lib/components/GithubIcon.svelte";
+  import GithubStars from "$lib/components/GithubStars.svelte";
 </script>
 
 <section class="section">
@@ -36,6 +37,7 @@
       >
         <GithubIcon />
         Star on GitHub
+        <GithubStars />
       </a>
     </div>
   </div>

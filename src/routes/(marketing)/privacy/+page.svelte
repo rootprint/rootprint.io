@@ -1,9 +1,10 @@
 <script lang="ts">
   import { WebsiteBaseUrl, WebsiteName } from "$lib/config";
+  import { githubUrl } from "$lib/links";
 
   const pageTitle = `Privacy — ${WebsiteName}`;
   const description =
-    "How we handle data on rootprint.io. Short version: we don't add analytics or tracking.";
+    "rootprint.io has no analytics, ads, or tracking cookies. Cloudflare serves the site and GitHub supplies the star count.";
   const canonical = `${WebsiteBaseUrl}/privacy/`;
 </script>
 
@@ -21,93 +22,83 @@
   <meta name="twitter:description" content={description} />
 </svelte:head>
 
-<article class="max-w-[1200px] mx-auto px-6 py-16">
-  <div class="max-w-[65ch] mx-auto">
-    <h1
-      class="text-3xl sm:text-4xl font-semibold text-base-content tracking-tight"
-    >
-      Privacy
-    </h1>
+<article class="wrap">
+  <h1>Privacy</h1>
+  <p class="muted">
+    This site has no analytics, ads, or tracking cookies, and we don't build
+    profiles of visitors. Two services see your requests.
+  </p>
 
-    <p class="mt-6 text-base text-neutral leading-relaxed">
-      We don't add any analytics, advertising, or tracking to this site. No
-      analytics scripts, no tracking cookies, and we don't build a profile of
-      who visits. The one thing to know: like any website, this site is served
-      by a hosting provider (Cloudflare), and serving a page involves some
-      standard technical data. Details below.
-    </p>
+  <h2>Cloudflare</h2>
+  <p class="muted">
+    Cloudflare hosts this site. It processes your IP address and request details
+    to serve pages and block abuse, and it may set a security cookie to filter
+    bots. See
+    <a
+      href="https://www.cloudflare.com/privacypolicy/"
+      target="_blank"
+      rel="noopener noreferrer">Cloudflare's Privacy Policy</a
+    >.
+  </p>
 
-    <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
-      What's not collected
-    </h2>
-    <ul
-      class="mt-4 space-y-2 text-base text-neutral leading-relaxed list-disc pl-6"
-    >
-      <li>
-        <strong class="text-base-content font-semibold"
-          >No analytics scripts.</strong
-        >
-        We don't load any analytics or measurement code, and we haven't enabled visitor
-        analytics on our host.
-      </li>
-      <li>
-        <strong class="text-base-content font-semibold"
-          >No tracking cookies.</strong
-        >
-        We set no cookies. Our host may set a security cookie to protect the site
-        from bots and abuse; it isn't used to track you.
-      </li>
-      <li>
-        <strong class="text-base-content font-semibold">No profiling.</strong>
-        We don't combine, sell, or use visitor data to build profiles or identify
-        individuals.
-      </li>
-      <li>
-        <strong class="text-base-content font-semibold"
-          >No cross-site tracking.</strong
-        > Your activity on other sites is not linked to activity here.
-      </li>
-    </ul>
+  <h2>GitHub</h2>
+  <p class="muted">
+    Your browser fetches the project's star count from GitHub's public API
+    (api.github.com), so GitHub sees your IP address and request details. The
+    request sends no cookies. See
+    <a
+      href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement"
+      target="_blank"
+      rel="noopener noreferrer">GitHub's Privacy Statement</a
+    >.
+  </p>
 
-    <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
-      Hosting
-    </h2>
-    <p class="mt-4 text-base text-neutral leading-relaxed">
-      This site is served through Cloudflare. To deliver and protect the site,
-      Cloudflare processes standard connection data, including your IP address
-      and basic request details, in its server logs for a limited period.
-      Cloudflare acts as a data processor on our behalf and doesn't use this
-      data for its own advertising. See <a
-        href="https://www.cloudflare.com/privacypolicy/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200"
-        >Cloudflare's Privacy Policy</a
-      >.
-    </p>
+  <h2>The Rootprint software</h2>
+  <p class="muted">
+    Rootprint runs on your own infrastructure and sends nothing back to us.
+  </p>
 
-    <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
-      The rest of Rootprint
-    </h2>
-    <p class="mt-4 text-base text-neutral leading-relaxed">
-      Rootprint is self-hosted software you run on your own infrastructure. When
-      you install and use Rootprint, no data from your installation flows back
-      to us. Everything stays on your servers.
-    </p>
+  <h2>Contact</h2>
+  <p class="muted">
+    Questions?
+    <a href="{githubUrl}/issues" target="_blank" rel="noopener noreferrer"
+      >Open an issue on GitHub</a
+    >.
+  </p>
 
-    <h2 class="mt-10 text-xl font-semibold text-base-content tracking-tight">
-      Contact
-    </h2>
-    <p class="mt-4 text-base text-neutral leading-relaxed">
-      Questions? <a
-        href="https://github.com/rootprint/rootprint/issues"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="underline decoration-neutral/40 underline-offset-2 hover:decoration-base-content hover:text-base-content transition-colors duration-200"
-        >Open an issue on GitHub</a
-      >.
-    </p>
-
-    <p class="mt-12 text-sm text-neutral/70">Last updated: 2026-09-18</p>
-  </div>
+  <p class="faint updated">Last updated: 2026-10-01</p>
 </article>
+
+<style>
+  article {
+    padding-top: 56px;
+    padding-bottom: 72px;
+  }
+
+  h2 {
+    margin-top: 40px;
+    font-size: 17px;
+  }
+
+  p {
+    max-width: 72ch;
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  h1 + p {
+    margin-top: 20px;
+  }
+
+  a {
+    color: var(--base-content);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .updated {
+    margin-top: 48px;
+    font-size: 13px;
+  }
+</style>

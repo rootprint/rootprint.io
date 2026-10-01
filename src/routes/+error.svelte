@@ -1,7 +1,12 @@
 <script>
   import "../app.css";
   import { page } from "$app/state";
+  import { WebsiteName } from "$lib/config";
 </script>
+
+<svelte:head>
+  <title>{page.status} — {WebsiteName}</title>
+</svelte:head>
 
 <div class="min-h-[100dvh] flex items-center justify-center px-6">
   <div class="text-center max-w-md">
@@ -15,14 +20,11 @@
         Something went wrong
       {/if}
     </h1>
-    <p class="text-neutral mt-3 leading-relaxed">
-      {page.error?.message ?? "An unexpected error occurred."}
-    </p>
-    <a
-      href="/"
-      class="btn btn-primary btn-lift mt-8"
-    >
-      Return home
-    </a>
+    {#if page.status !== 404}
+      <p class="text-neutral mt-3 leading-relaxed">
+        {page.error?.message ?? "An unexpected error occurred."}
+      </p>
+    {/if}
+    <a href="/" class="btn btn-primary btn-lift mt-8"> Return home </a>
   </div>
 </div>

@@ -7,7 +7,7 @@
   import Faq from "$lib/components/home/Faq.svelte";
   import Cta from "$lib/components/home/Cta.svelte";
 
-  const pageTitle = `${WebsiteName} — Open-Source, Self-Hosted Logs and Traces`;
+  const pageTitle = `${WebsiteName} — Self-Hosted Log and Trace Search on S3`;
   const ldJson = [
     {
       "@context": "https://schema.org",
@@ -54,7 +54,7 @@
   <meta property="og:image:height" content="630" />
   <meta
     property="og:image:alt"
-    content="Rootprint — own your logs, search them fast"
+    content="Rootprint: Keep every log. Find any line."
   />
   <meta property="og:site_name" content={WebsiteName} />
   <meta name="twitter:card" content="summary_large_image" />
@@ -63,7 +63,7 @@
   <meta name="twitter:image" content={socialImageUrl} />
   <meta
     name="twitter:image:alt"
-    content="Rootprint — own your logs, search them fast"
+    content="Rootprint: Keep every log. Find any line."
   />
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html jsonldScript}

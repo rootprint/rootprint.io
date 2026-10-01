@@ -25,15 +25,15 @@
 
 <section style="padding: 64px 0 72px;">
   <div class="wrap">
-    <h1 style="max-width: 22ch;">Own your logs. Search them fast.</h1>
+    <h1 style="max-width: 16ch;">Keep every log. Find any line.</h1>
     <p
       class="muted"
       style="margin-top: 16px; max-width: 62ch; font-size: 15px;"
     >
       Rootprint is an open-source, self-hosted platform for logs and traces:
-      OpenTelemetry-native ingestion, full-text search, trace waterfalls, and a
-      service health dashboard, indexed straight to your own S3-compatible
-      object storage. Retention costs whatever your bucket costs.
+      OpenTelemetry-native ingestion, full-text search, a trace explorer, and
+      service health pages. Indexes live in your own S3-compatible bucket, so
+      retention costs whatever your bucket costs.
     </p>
 
     <div
