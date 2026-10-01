@@ -7,7 +7,7 @@
   const description =
     "Every Rootprint release, with what changed and what to do before upgrading.";
   const canonical = `${WebsiteBaseUrl}/releases/`;
-  const socialImage = `${WebsiteBaseUrl}/images/home-image.png`;
+  const socialImage = `${WebsiteBaseUrl}/images/og-card.png`;
 
   const perPage = 10;
   const pageCount = Math.ceil(releases.length / perPage);

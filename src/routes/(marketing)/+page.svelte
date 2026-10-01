@@ -38,7 +38,7 @@
   const jsonldScript = `<script type="application/ld+json">${
     JSON.stringify(ldJson) + "<"
   }/script>`;
-  const socialImageUrl = `${WebsiteBaseUrl}/images/home-image.png`;
+  const socialImageUrl = `${WebsiteBaseUrl}/images/og-card.png`;
 </script>
 
 <svelte:head>

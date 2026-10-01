@@ -9,7 +9,7 @@
   const isLatest = $derived(release.version === latest.version);
   const title = $derived(`Rootprint ${release.version}: ${release.title}`);
   const canonical = $derived(`${WebsiteBaseUrl}/releases/${release.version}/`);
-  const socialImage = `${WebsiteBaseUrl}/images/home-image.png`;
+  const socialImage = `${WebsiteBaseUrl}/images/og-card.png`;
 </script>
 
 <svelte:head>

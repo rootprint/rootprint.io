@@ -7,7 +7,7 @@
   const comparison = $derived(data.comparison);
   const title = $derived(`Rootprint vs ${comparison.navLabel}`);
   const canonical = $derived(`${WebsiteBaseUrl}/compare/${comparison.slug}/`);
-  const socialImage = `${WebsiteBaseUrl}/images/home-image.png`;
+  const socialImage = `${WebsiteBaseUrl}/images/og-card.png`;
 </script>
 
 <svelte:head>

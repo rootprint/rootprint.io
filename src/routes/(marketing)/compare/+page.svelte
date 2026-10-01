@@ -7,7 +7,7 @@
   const description =
     "How Rootprint compares with Datadog, Elastic, Grafana Loki, and HyperDX for log search, tracing, storage, and cost.";
   const canonical = `${WebsiteBaseUrl}/compare/`;
-  const socialImage = `${WebsiteBaseUrl}/images/home-image.png`;
+  const socialImage = `${WebsiteBaseUrl}/images/og-card.png`;
 </script>
 
 <svelte:head>
