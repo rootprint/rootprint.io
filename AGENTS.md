@@ -56,6 +56,28 @@ bun run format_check # prettier check
 - Use the tokens on `:root` in `src/app.css` (`--base-*`, `--hairline*`, `--primary*`, `--ink*`). Put page-specific styles in the component's scoped `<style>`.
 - Tailwind utilities are fine for one-off layout.
 
+## Releases
+
+Each release with a page is `src/content/releases/X.Y.Z.md` (no `v`). The filename is the version. `$lib/releases.ts` builds the `/releases/` table, the release pages, and the sitemap entries from these files; 0.1.x rows are a hard-coded list there.
+
+Frontmatter, all required (the build fails otherwise):
+
+```yaml
+---
+date: "2026-09-22" # quoted; the date in the CHANGELOG heading
+title: OpenID Connect SSO # headline, about six words or fewer
+summary: One sentence under ~160 characters; the page lede and meta description.
+---
+```
+
+Body, in order:
+
+1. Announcement: two to four short paragraphs on what changed for users and why it matters, biggest change first. Plain and specific, no superlatives.
+2. `## Before you upgrade`: only when the release has breaking changes, migrations, or required config. A list of actions.
+3. `## Changelog`: the release's CHANGELOG section pasted verbatim, its `###` headings unchanged.
+
+mdsvex compiles these files as Svelte, so a literal `{`, `}`, or `<tag>` outside backticks breaks the build. Wrap such text in backticks.
+
 ## Tests
 
 No automated tests. Run `bun run check` and `bun run build`, then do manual

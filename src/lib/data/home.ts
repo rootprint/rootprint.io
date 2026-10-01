@@ -1,7 +1,7 @@
 /** Content for the marketing home page sections. Kept out of the markup so
  *  copy can be edited without touching layout. */
 import { ScopeLine } from "$lib/config";
-import { docsUrl, githubUrl } from "$lib/links";
+import { docsUrl } from "$lib/links";
 
 /* NOTE: the compose command below matches docs.rootprint.io/quickstart.
    Docker/helm tabs can be added here once those artifacts exist — the hero
@@ -95,7 +95,7 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: "Is it production-ready?",
-    a: `Rootprint is pre-1.0 and under active development. See the <a href="${githubUrl}/blob/main/CHANGELOG.md">changelog</a> for the current release status. The engine underneath is Quickwit, which runs petabyte-scale log search in production.`,
+    a: `Rootprint is pre-1.0 and under active development. See the <a href="/releases/">release notes</a> for the current release status. The engine underneath is Quickwit, which runs petabyte-scale log search in production.`,
   },
   {
     q: "Does it do metrics or alerting?",

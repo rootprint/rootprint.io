@@ -3,7 +3,7 @@ import { comparisonLinks } from "$lib/data/comparison-links";
 export const rootprintFeatures = {
   Hosting: "Self-hosted",
   "Log search": "Full-text and field search",
-  Traces: "Trace explorer and waterfalls, linked to related logs",
+  Traces: "Distributed tracing from OpenTelemetry",
   "Service health":
     "Per-service request rate, error rate, p95 latency, and dependencies",
   Storage: "Your object storage; local disk for development",

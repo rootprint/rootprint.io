@@ -15,6 +15,7 @@
   const navLinks = [
     { label: "Docs", href: docsUrl, external: true },
     { label: "Compare", href: "/compare/", external: false },
+    { label: "Releases", href: "/releases/", external: false },
     { label: "Architecture", href: "/#architecture", external: false },
     { label: "FAQ", href: "/#faq", external: false },
   ];
@@ -114,6 +115,17 @@
           style="padding: 8px 0; color: var(--base-content);"
           onclick={() => (mobileMenuOpen = false)}>GitHub</a
         >
+        <!-- The menu shows up to 859px, but .desktop-only links show from 760px. -->
+        <a
+          href={demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-sm btn-primary desktop-only"
+          style="margin-top: 8px;"
+          onclick={() => (mobileMenuOpen = false)}
+        >
+          Live demo
+        </a>
       </div>
     </nav>
   {/if}
@@ -134,9 +146,7 @@
         <a href="/#capabilities" class="footer-link">Features</a>
         <a href="/#architecture" class="footer-link">Architecture</a>
         <a href="/#faq" class="footer-link">FAQ</a>
-        <a href="{githubUrl}/blob/main/CHANGELOG.md" class="footer-link"
-          >Changelog</a
-        >
+        <a href="/releases/" class="footer-link">Changelog</a>
       </div>
       <div class="footer-cell">
         <div class="mono footer-h">DOCS</div>
@@ -186,7 +196,7 @@
 </footer>
 
 <style>
-  @media (min-width: 760px) {
+  @media (min-width: 860px) {
     [data-nav-desktop] {
       display: flex !important;
     }
