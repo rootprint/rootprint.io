@@ -7,7 +7,7 @@
   <div class="wrap">
     <h2>What is Rootprint?</h2>
 
-    <ul class="check-list" style="margin-top: 28px; max-width: 72ch;">
+    <ul class="check-list" style="margin-top: 28px;">
       {#each whatIs as item}
         <li>
           <span>

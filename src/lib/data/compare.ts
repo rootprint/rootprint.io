@@ -26,7 +26,7 @@ export const comparisons: Record<ComparisonSlug, Comparison> = {
     description:
       "With Rootprint, you run log search and tracing on your own infrastructure. Datadog hosts these services for you and includes tools for monitoring, alerting, and incident response.",
     summary:
-      "Log search, tracing, and service health on your own infrastructure. Not the whole suite: no RUM, synthetics, or alerting.",
+      "Log search, tracing, and service health on your own infrastructure, with your data in your own bucket.",
     features: {
       Hosting: "Datadog's hosted service",
       "Log search": "Full-text search, facets, and log analytics",

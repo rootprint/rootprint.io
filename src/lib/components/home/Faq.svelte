@@ -5,7 +5,7 @@
 <section class="section anchor" id="faq">
   <div class="wrap">
     <h2>Frequently asked questions</h2>
-    <div class="faq" style="margin-top: 28px; max-width: 760px;">
+    <div class="faq" style="margin-top: 28px;">
       {#each faq as item}
         <details>
           <summary>{item.q}</summary>
