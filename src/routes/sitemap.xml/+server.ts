@@ -5,6 +5,7 @@ import { pages } from "$lib/releases";
 
 const routes = [
   "/",
+  "/cost/",
   "/privacy/",
   "/compare/",
   ...comparisonLinks.map(({ slug }) => `/compare/${slug}/`),

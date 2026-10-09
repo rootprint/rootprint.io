@@ -392,6 +392,7 @@ a {
 }
 .site-nav-links a {
   padding: 8px 12px;
+  white-space: nowrap;
   color: var(--base-content-muted);
   transition: color 0.15s ease;
 }

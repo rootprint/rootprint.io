@@ -87,7 +87,7 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: "What does it cost?",
-    a: "Nothing for the software (Apache-2.0). You pay your cloud provider for the compute it runs on and the storage it fills. Rootprint charges nothing per host, per seat, or per GB ingested.",
+    a: `Nothing for the software (Apache-2.0). You pay your cloud provider for the compute it runs on and the storage it fills. Rootprint charges nothing per host, per seat, or per GB ingested. Estimate your S3 bill with the <a href="/cost/">cost calculator</a>.`,
   },
   {
     q: "What storage do I need?",

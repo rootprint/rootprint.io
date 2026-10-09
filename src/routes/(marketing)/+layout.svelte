@@ -16,7 +16,7 @@
     { label: "Docs", href: docsUrl, external: true },
     { label: "Compare", href: "/compare/", external: false },
     { label: "Releases", href: "/releases/", external: false },
-    { label: "Architecture", href: "/#architecture", external: false },
+    { label: "Cost calculator", href: "/cost/", external: false },
     { label: "FAQ", href: "/#faq", external: false },
   ];
 </script>
@@ -115,7 +115,7 @@
           style="padding: 8px 0; color: var(--base-content);"
           onclick={() => (mobileMenuOpen = false)}>GitHub</a
         >
-        <!-- The menu shows up to 859px, but .desktop-only links show from 760px. -->
+        <!-- The menu shows up to 899px, but .desktop-only links show from 760px. -->
         <a
           href={demoUrl}
           target="_blank"
@@ -146,6 +146,7 @@
         <a href="/#capabilities" class="footer-link">Features</a>
         <a href="/#architecture" class="footer-link">Architecture</a>
         <a href="/#faq" class="footer-link">FAQ</a>
+        <a href="/cost/" class="footer-link">Cost calculator</a>
         <a href="/releases/" class="footer-link">Changelog</a>
       </div>
       <div class="footer-cell">
@@ -196,7 +197,7 @@
 </footer>
 
 <style>
-  @media (min-width: 860px) {
+  @media (min-width: 900px) {
     [data-nav-desktop] {
       display: flex !important;
     }
